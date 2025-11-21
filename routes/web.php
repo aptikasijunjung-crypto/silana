@@ -52,6 +52,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::controller(KurangmampuController::class)->group(function () {
         Route::get('/kurang/mampu', 'index')->name('kurang.mampu');
         Route::post('/kurang/mampu/modal', 'modal')->name('kurang.mampu.modal');
+        Route::post('/kurang/mampu/modal/delete', 'modaldelete')->name('kurang.mampu.modal.delete');
         Route::post('/kurang/mampu/store', 'store')->name('kurang.mampu.store');
     });
     Route::controller(AutoController::class)->group(function () {

@@ -32,6 +32,10 @@ class PdfsuratServices
         $this->fpdf->Cell('190', 5, 'SURAT KETERANGAN TIDAK MAMPU/MISKIN', 0, 1, 'C');
         $this->fpdf->SetFont('times', '', 10);
         $this->fpdf->Cell('190', 5, 'Nomor : ' . $data['nomor'], 0, 1, 'C');
+        $this->fpdf->Cell('190', 5, 'Yang Bertanda tangan di bawah ini :', 0, 1, 'L');
+        $this->fpdf->setWidths(array(10, 5, 50, 10, 100));
+        $this->fpdf->NoBaris(array('', 'a.', 'Nama', ':', 'Ebid'));
+        $this->fpdf->NoBaris(array('', 'a.', 'Jabatan', ':', 'Ebid'));
 
         $this->fpdf->SetWidths(array(50));
         $this->fpdf->SetAligns(array('C'));

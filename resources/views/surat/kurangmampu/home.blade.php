@@ -30,6 +30,7 @@
 
     @php
         echo lgModal();
+        echo smModal();
     @endphp
 @endsection
 
@@ -46,6 +47,19 @@
                 kelurahan_id: kelurahan_id
             }, function(data) {
                 $("div.lg-modal").html(data);
+
+            });
+        });
+
+        $('button.modal-delete').click(function() {
+            $('#smModal').modal('show');
+            id = $(this).attr('id');
+            csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            $.post("{{ route('kurang.mampu.modal.delete') }}", {
+                id: id,
+                _token: csrfToken,
+            }, function(data) {
+                $("div.sm-modal").html(data);
 
             });
         });

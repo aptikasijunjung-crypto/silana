@@ -197,6 +197,7 @@ function tabelLayananKurangMampu($data)
                     <th class='text-center'>Terbit</th>
                     <th class='text-center'>Hasil</th>
                     <th class='text-center'>TTE</th>
+                    <th class='text-center'>Hapus</th>
                     
                    
                 </tr>
@@ -216,7 +217,7 @@ function tabelLayananKurangMampu($data)
             <td class='text-center'>" . $i->alasan_name . "</td>
             <td class='text-center'>
                 <button type='button' class='btn btn-link btn-sm lihat-draft' file='bahan/" . $i->bahan . "'>
-                    <i class='icon-2x text-danger flaticon-file'></i>
+                    <i class='icon-2x text-warning flaticon-file'></i>
                 </button>
             </td>
             <td class='text-center'>" . $i->created_at . "</td>";
@@ -229,7 +230,12 @@ function tabelLayananKurangMampu($data)
                     </button>
                     </td>";
         }
-        $t .= "<td class='text-center'>" . $i->updated_at . "</td>";
+        $t .= "<td class='text-center'>" . $i->updated_at . "</td>
+                <td class='text-center'>
+                    <button type='button' class='btn btn-link modal-delete' id='" . $i->id . "'>
+                        <i class='icon-2x text-danger flaticon-delete'></i>
+                    </button>
+                </td>";
 
 
         $t .= "    

@@ -32,7 +32,7 @@
     <script src="{{ asset('assets/js/pdfjs-viewer.js') }}"></script>
     <script>
         $('button.modal-tte').click(function() {
-            $('#lgModal').modal('show');
+            $('#xlModal').modal('show');
             id = $(this).attr('id');
             csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
             $.post("{{ route('modal.tte') }}", {

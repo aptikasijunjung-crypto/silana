@@ -2,17 +2,23 @@
     @csrf
     <input type="hidden" name="layanan_id" id="layanan_id" value="1">
     <input type="hidden" name="nomor" id="nomor" value="{{ rand_string(10) }}">
-    <input type="hidden" name="kelurahan_id" id="kelurahan_id" value="{{ $kelurahan_id }}">
+    <input type="hidden" name="kelurahan_id" id="kelurahan_id" value="{{ $data->kelurahan_id }}">
     <div class="form-group">
         <label for="">Pejabat Penanda Tangan</label>
         <input type="text" name="pejabat_name" id="pejabat_name" class="form-control"
-            placeholder="Pejabat Penanda Tangan">
+            placeholder="Pejabat Penanda Tangan" value="{{ $data->kepala }}" readonly>
         <input type="hidden" name="pejabat_id" id="pejabat_id">
-        <input type="hidden" name="pejabat_nik" id="pejabat_nik">
+
     </div>
     <div class="form-group">
         <label for="">Jabatan</label>
-        <input type="text" name="jabatan" id="jabatan" class="form-control" placeholder="Jabatan" readonly>
+        <input type="text" name="jabatan" id="jabatan" class="form-control" placeholder="Jabatan"
+            value="{{ $data->jabatan }}" readonly>
+    </div>
+    <div class="form-group">
+        <label for="">NIK</label>
+        <input type="text" name="pejabat_nik" id="pejabat_nik" class="form-control" placeholder="NIK"
+            value="{{ $data->nik }}" readonly>
     </div>
 
     <div id="orangtua">
@@ -264,9 +270,16 @@
     });
 
     $("form#proses").submit(function() {
+
         $.post("{{ route('kurang.mampu.store') }}", $(this).serialize(), function(data) {
-            alert(data.id);
-            $('div#tabel').html(data.tabel);
+            if (data.id == 0) {
+                komentar(0, 'Oppss', data.komen);
+            } else {
+                komentar(1, 'Success', data.komen);
+                $('div#tabel').html(data.tabel);
+                $('#lgModal').modal('hide');
+            }
+
         }, 'json');
 
     });
