@@ -21,7 +21,7 @@ class PortalController extends Controller
             'kelurahan' => $data
         ];
         $logo = session(['logo' => $session]);
-        $berita6 = DB::select('SELECT a.id, a.title, a.image_default, a.content
+        $berita6 = DB::select('SELECT a.id, a.title, a.image_default, a.content, a.slug
         FROM posts a ORDER BY a.created_at DESC LIMIT 0,6');
 
         $berita74 = DB::select('SELECT a.id, a.title, a.image_default, a.content, a.image_large
@@ -48,5 +48,15 @@ class PortalController extends Controller
             'ulang' => $featured,
             'categories' => $categories
         ]);
+    }
+
+    public function singlepost(Request $request)
+    {
+        $data = DB::select('SELECT a.id, a.image_large, a.title, a.content, a.categories,
+                        b.name 
+                        FROM posts a LEFT JOIN users b ON a.user_id=b.id
+                        where a.slug = ?', [$request->id])[0];
+
+        return view('portal.single', ['data' => $data]);
     }
 }

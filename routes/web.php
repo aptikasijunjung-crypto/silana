@@ -99,4 +99,5 @@ Route::get('/pdf', [PdfController::class, 'index']);
 
 Route::controller(PortalController::class)->group(function () {
     Route::get('/portal/{id}', 'index')->name('portal.index', ['id']);
+    Route::get('/portal/news/{id}', 'singlepost')->name('post.single', ['id']);
 });

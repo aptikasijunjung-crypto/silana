@@ -8,7 +8,7 @@
 
                 @foreach ($berita6 as $item)
                     <div class="col-sm-6 col-lg-4 mb-4 pb-2">
-                        <a href="blog-post.html">
+                        <a href="{{ route('post.single', ['id' => $item->slug]) }}">
                             <article>
                                 <div
                                     class="thumb-info thumb-info-no-borders thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom border-radius-0">
