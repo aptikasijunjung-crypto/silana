@@ -77,7 +77,7 @@ class KurangmampuController extends Controller
             $komen = "Pilih Alasan Pembuatan Surat";
         } else {
             $data_kecamatan = DB::select('SELECT a.kelurahan_name, a.alamat, a.keterangan AS NAMAKELURAHAN,
-                            a.email, a.website,
+                            a.email, a.website, a.tempat,
                             b.kecamatan_name, b.keterangan AS NAMAKECAMATAN,
                             c.keterangan AS NAMAKOTA FROM kelurahan a, kecamatan b, kota c WHERE 
                             a.kecamatan_id=b.kecamatan_id AND
@@ -103,6 +103,19 @@ class KurangmampuController extends Controller
                 'ortu_kawin_name' => $request->ortu_kawin_name,
                 'ortu_pekerjaan_name' => $request->ortu_pekerjaan_name,
                 'ortu_alamat' => $request->ortu_alamat,
+
+                'anak_name' => $request->anak_name,
+                'anak_id' => $request->anak_id,
+                'anak_nik' => $request->anak_nik,
+                'anak_tempat' => $request->anak_tempat,
+                'anak_tanggal' => $request->anak_tanggal,
+                'anak_sex_name' => $request->anak_sex_name,
+                'anak_kawin_name' => $request->anak_kawin_name,
+                'anak_pekerjaan_name' => $request->anak_pekerjaan_name,
+                'anak_alamat' => $request->anak_alamat,
+                'alasan_name' => $request->alasan_name,
+                'tempat' => $data_kecamatan->tempat,
+                'created_at' => tgl_indonesia(date('Y-m-d')),
                 'file' => Storage::path('bahan/' . $file)
             ];
             $pdfsurat_services->PDFTidakMampu($data);

@@ -153,6 +153,7 @@
 
             @endphp
             <?= cKombo('alasan_id', 'Pilih Alasan', 'id', 'nama', $data_alasan, '#') ?>
+            <input type="hidden" name="alasan_name" id="alasan_name">
         </div>
     </div>
     <div class="form-group">
@@ -162,6 +163,11 @@
 </form>
 
 <script>
+    $('select#alasan_id').change(function(e) {
+        e.preventDefault();
+        $('input#alasan_name').val($("#alasan_id option:selected").text());
+
+    });
     $('input#pejabat_name').autocomplete({
         source: function(request, response) {
             $.ajax({
