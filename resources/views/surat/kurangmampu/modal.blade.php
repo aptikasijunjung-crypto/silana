@@ -7,7 +7,7 @@
         <label for="">Pejabat Penanda Tangan</label>
         <input type="text" name="pejabat_name" id="pejabat_name" class="form-control"
             placeholder="Pejabat Penanda Tangan" value="{{ $data->kepala }}" readonly>
-        <input type="hidden" name="pejabat_id" id="pejabat_id">
+        <input type="hidden" name="pejabat_id" id="pejabat_id" value="{{ $data->kepalaid }}">
 
     </div>
     <div class="form-group">

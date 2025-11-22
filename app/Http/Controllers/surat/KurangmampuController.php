@@ -37,7 +37,31 @@ class KurangmampuController extends Controller
 
     public function modaldelete(Request $request)
     {
-        return view('surat.kurangmampu.modaldelete');
+
+
+        return view('surat.kurangmampu.modaldelete', ['id' => $request->id]);
+    }
+
+    public function prosesdelete(Request $request)
+    {
+        $data = DB::table('dokumen')->where('id', $request->id)->get()->first();
+        if (file_exists(Storage::path('bahan/' . $data->bahan))) {
+            unlink(Storage::path('bahan/' . $data->bahan));
+        }
+
+        if (empty($data->hasil)) {
+        } else {
+            if (file_exists(Storage::path($data->hasil))) {
+                unlink(Storage::path($data->hasil));
+            }
+        }
+        DB::table('dokumen')->where('id', $request->id)->delete();
+
+
+        return response()->json([
+            'id' => $request->id,
+            'kode' => null
+        ]);
     }
 
     public function store(Request $request, PdfsuratServices $pdfsurat_services)
@@ -112,7 +136,7 @@ class KurangmampuController extends Controller
                 'created_at' => Carbon::now(),
                 'bahan' => $file
             ]);
-            $query = DB::select('SELECT a.nomor, a.pejabat_name, a.pejabat_nik, a.jabatan, a.bahan, 
+            $query = DB::select('SELECT a.id, a.nomor, a.pejabat_name, a.pejabat_nik, a.jabatan, a.bahan, 
                                 a.hasil, a.created_at, a.updated_at, a.ortu_name, a.anak_name,
                                 b.nama AS alasan_name
                                 FROM dokumen a, alasan b 

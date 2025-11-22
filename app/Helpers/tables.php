@@ -206,7 +206,7 @@ function tabelLayananKurangMampu($data)
     $no = 1;
     foreach ($data as $i) {
         $t .= "
-        <tr>
+        <tr id='baris-" . $i->id . "'>
             <td class='text-center'>" . $no . ".</td>
             <td class='text-center'>" . $i->nomor . "</td>
             <td class='text-center'>" . $i->pejabat_name . "</td>
