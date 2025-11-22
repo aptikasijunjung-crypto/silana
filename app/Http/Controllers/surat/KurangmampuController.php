@@ -93,7 +93,16 @@ class KurangmampuController extends Controller
                 'alamat' => $data_kecamatan->alamat,
                 'email' => $data_kecamatan->email,
                 'website' => $data_kecamatan->website,
-
+                'kepala' => $request->pejabat_name,
+                'jabatan' => $request->jabatan,
+                'ortu_name' => $request->ortu_name,
+                'ortu_nik' => $request->ortu_nik,
+                'ortu_tempat' => $request->ortu_tempat,
+                'ortu_tanggal' => $request->ortu_tanggal,
+                'ortu_sex_name' => $request->ortu_sex_name,
+                'ortu_kawin_name' => $request->ortu_kawin_name,
+                'ortu_pekerjaan_name' => $request->ortu_pekerjaan_name,
+                'ortu_alamat' => $request->ortu_alamat,
                 'file' => Storage::path('bahan/' . $file)
             ];
             $pdfsurat_services->PDFTidakMampu($data);
@@ -134,7 +143,9 @@ class KurangmampuController extends Controller
                 'anak_alamat' => $request->anak_alamat,
                 'alasan_id' => $request->alasan_id,
                 'created_at' => Carbon::now(),
-                'bahan' => $file
+                'bahan' => $file,
+                'tahun' => Carbon::now()->year,
+                'bulan' => Carbon::now()->month
             ]);
             $query = DB::select('SELECT a.id, a.nomor, a.pejabat_name, a.pejabat_nik, a.jabatan, a.bahan, 
                                 a.hasil, a.created_at, a.updated_at, a.ortu_name, a.anak_name,

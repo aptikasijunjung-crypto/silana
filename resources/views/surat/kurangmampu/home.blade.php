@@ -51,7 +51,7 @@
             });
         });
 
-        $('button.modal-delete').click(function() {
+        $(document).on('click', 'button.modal-delete', function() {
             $('#smModal').modal('show');
             id = $(this).attr('id');
             csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
