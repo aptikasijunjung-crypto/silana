@@ -45,7 +45,7 @@ class PdfsuratServices
         $this->fpdf->NoBaris(array('', 'd.', 'Jenis Kelamin', ':', $data['ortu_sex_name']));
         $this->fpdf->NoBaris(array('', 'e.', 'Status', ':', $data['ortu_kawin_name']));
         $this->fpdf->NoBaris(array('', 'f.', 'Pekerjaan', ':', $data['ortu_pekerjaan_name']));
-        $this->fpdf->NoBaris(array('', 'g.', 'Alamat', ':', $data['ortu_alamat']));
+        $this->fpdf->NoBaris(array('', 'g.', 'Alamat', ':', strtoupper($data['ortu_alamat'])));
         $this->fpdf->ln();
         $this->fpdf->Cell('190', 5, 'Adalah Orang Tua Dari :', 0, 1, 'L');
         $this->fpdf->setWidths(array(10, 7, 50, 5, 120));
@@ -55,7 +55,7 @@ class PdfsuratServices
         $this->fpdf->NoBaris(array('', 'd.', 'Jenis Kelamin', ':', $data['anak_sex_name']));
         $this->fpdf->NoBaris(array('', 'e.', 'Status', ':', $data['anak_kawin_name']));
         $this->fpdf->NoBaris(array('', 'f.', 'Pekerjaan', ':', $data['anak_pekerjaan_name']));
-        $this->fpdf->NoBaris(array('', 'g.', 'Alamat', ':', $data['anak_alamat']));
+        $this->fpdf->NoBaris(array('', 'g.', 'Alamat', ':', strtoupper($data['anak_alamat'])));
         $this->fpdf->ln();
         $this->fpdf->SetWidths(array(190));
         $this->fpdf->NoBaris(array('Menurut sepengetahuan kami orang tersebut diatas benar kurang mampu'));
@@ -76,7 +76,7 @@ class PdfsuratServices
         $this->fpdf->NoBaris(array("", "Pada Tanggal", ":", $data['created_at']));
         $this->fpdf->SetWidths(array(100, 80));
         $this->fpdf->SetAligns(array('C', 'C'));
-        $this->fpdf->NoBaris(array("", "\n\n\n^\n\n\n\n" . strtoupper($data['kepala']) . "\n" . strtoupper($data['jabatan'])));
+        $this->fpdf->NoBaris(array("", "\n\n\n^\n\n\n" . strtoupper($data['kepala']) . "\n" . strtoupper($data['jabatan'])));
 
 
         // $this->fpdf->Output(Storage::path('draft/' . Str::uuid() . '.pdf'), 'f');

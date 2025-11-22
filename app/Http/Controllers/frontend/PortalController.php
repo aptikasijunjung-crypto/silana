@@ -10,7 +10,12 @@ class PortalController extends Controller
 {
     public function index(Request $request)
     {
-        $data = DB::select('select * from kelurahan where slug = ?', [$request->id])[0];
+        $data = DB::select('SELECT 
+                            a.kelurahan_id, a.kelurahan_name, a.sebutan, a.kepala, a.banner, a.logo, a.komitmen,
+                            b.photo
+                            FROM kelurahan a 
+                            LEFT JOIN users b ON a.kepalaid=b.id
+                            WHERE  a.slug = ?', [$request->id])[0];
         $session = [
             'logo' => 'logo',
             'kelurahan' => $data
@@ -28,6 +33,9 @@ class PortalController extends Controller
         $recent = DB::select('SELECT a.id, a.title, a.image_square, a.content, a.created_at
         FROM posts a ORDER BY rand() DESC LIMIT 0,5');
 
+        $featured = DB::select('SELECT a.id, a.title, a.image_large, a.content, a.created_at
+        FROM posts a WHERE ulang=1');
+
         $categories = DB::select('select * from categories where id IN (select a.categories_id FROM posts_categories a, posts b WHERE
                                     a.posts_id=b.id GROUP BY a.categories_id) ');
         return view('portal.index', [
@@ -37,6 +45,7 @@ class PortalController extends Controller
             'berita74' => $berita74,
             'popular' => $popular,
             'recent' => $recent,
+            'ulang' => $featured,
             'categories' => $categories
         ]);
     }

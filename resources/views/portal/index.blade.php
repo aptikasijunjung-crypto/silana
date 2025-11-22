@@ -121,100 +121,54 @@
                 <div class="owl-carousel owl-theme"
                     data-plugin-options="{'items': 1, 'margin': 10, 'loop': true, 'nav': false, 'dots': false, 'autoplay': true, 'autoplayTimeout': 5000}">
 
-                    <div>
-                        <a href="blog-post.html">
-                            <article>
-                                <div
-                                    class="thumb-info thumb-info-no-borders thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom border-radius-0">
-                                    <div class="thumb-info-wrapper thumb-info-wrapper-opacity-6">
-                                        <img src="{{ asset('frontend/img/blog/wide/blog-65.jpg') }}" class="img-fluid"
-                                            alt="Main Reasons To Stop Texting And Driving">
-                                        <div class="thumb-info-title bg-transparent p-4">
-                                            <div class="thumb-info-type bg-color-primary px-2 mb-1">Technology
-                                            </div>
-                                            <div class="thumb-info-inner mt-1">
-                                                <h2 class="text-color-light line-height-2 text-4 font-weight-bold mb-0">
-                                                    Main Reasons To Stop Texting And Driving</h2>
-                                            </div>
-                                            <div class="thumb-info-show-more-content">
-                                                <p class="mb-0 text-1 line-height-9 mb-1 mt-2 text-light opacity-5">
-                                                    Lorem ipsum dolor sit amet, consectetur adip...</p>
+                    @foreach ($ulang as $item)
+                        <div>
+                            <a href="blog-post.html">
+                                <article>
+                                    <div
+                                        class="thumb-info thumb-info-no-borders thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom border-radius-0">
+                                        <div class="thumb-info-wrapper thumb-info-wrapper-opacity-6">
+                                            <img src="data:image/png;base64, {{ base64_encode(Storage::get('gallery/' . $item->image_large)) }}"
+                                                class="img-fluid" alt="Why should I buy a smartwatch?">
+                                            <div class="thumb-info-title bg-transparent p-4">
+                                                <div class="thumb-info-type bg-color-primary px-2 mb-1">Gadgets
+                                                </div>
+                                                <div class="thumb-info-inner mt-1">
+                                                    <h2 class="text-color-light line-height-2 text-4 font-weight-bold mb-0">
+                                                        {{ $item->title }}</h2>
+                                                </div>
+                                                <div class="thumb-info-show-more-content">
+                                                    <p class="mb-0 text-1 line-height-9 mb-1 mt-2 text-light opacity-5">
+                                                        {{ Str::words(strip_tags($item->content), 10, '...') }}</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </article>
-                        </a>
-                    </div>
+                                </article>
+                            </a>
+                        </div>
+                    @endforeach
 
-                    <div>
-                        <a href="blog-post.html">
-                            <article>
-                                <div
-                                    class="thumb-info thumb-info-no-borders thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom border-radius-0">
-                                    <div class="thumb-info-wrapper thumb-info-wrapper-opacity-6">
-                                        <img src="{{ asset('frontend/img/blog/wide/blog-66.jpg') }}" class="img-fluid"
-                                            alt="Tips to Help You Quickly Prepare your Lunch">
-                                        <div class="thumb-info-title bg-transparent p-4">
-                                            <div class="thumb-info-type bg-color-primary px-2 mb-1">Recipes
-                                            </div>
-                                            <div class="thumb-info-inner mt-1">
-                                                <h2 class="text-color-light line-height-2 text-4 font-weight-bold mb-0">
-                                                    Tips to Help You Quickly Prepare your Lunch</h2>
-                                            </div>
-                                            <div class="thumb-info-show-more-content">
-                                                <p class="mb-0 text-1 line-height-9 mb-1 mt-2 text-light opacity-5">
-                                                    Lorem ipsum dolor sit amet, consectetur adip...</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                        </a>
-                    </div>
 
-                    <div>
-                        <a href="blog-post.html">
-                            <article>
-                                <div
-                                    class="thumb-info thumb-info-no-borders thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom border-radius-0">
-                                    <div class="thumb-info-wrapper thumb-info-wrapper-opacity-6">
-                                        <img src="{{ asset('frontend/img/blog/wide/blog-67.jpg') }}" class="img-fluid"
-                                            alt="Why should I buy a smartwatch?">
-                                        <div class="thumb-info-title bg-transparent p-4">
-                                            <div class="thumb-info-type bg-color-primary px-2 mb-1">Gadgets
-                                            </div>
-                                            <div class="thumb-info-inner mt-1">
-                                                <h2 class="text-color-light line-height-2 text-4 font-weight-bold mb-0">
-                                                    Why should I buy a smartwatch?</h2>
-                                            </div>
-                                            <div class="thumb-info-show-more-content">
-                                                <p class="mb-0 text-1 line-height-9 mb-1 mt-2 text-light opacity-5">
-                                                    Lorem ipsum dolor sit amet, consectetur adip...</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                        </a>
-                    </div>
 
                 </div>
 
-                <h3 class="font-weight-bold text-3 mt-4 pt-2 mb-2 mt-4 mt-md-0">Featured Author</h3>
+                <h3 class="font-weight-bold text-3 mt-4 pt-2 mb-2 mt-4 mt-md-0">{{ session('logo')['kelurahan']->sebutan }}
+                </h3>
 
                 <div class="post-block post-author pt-2">
                     <div class="img-thumbnail img-thumbnail-no-borders d-block pb-3">
                         <a href="blog-post.html">
-                            <img class="border-radius-0" src="{{ asset('frontend/img/avatars/avatar.jpg') }}"
+                            <img class="border-radius-0"
+                                src="data:image/png;base64, {{ base64_encode(Storage::get('photos/' . session('logo')['kelurahan']->photo)) }}"
                                 alt="The post author image"
                                 style="height: 112px; max-height: 112px; width: auto; max-width: 100%;">
                         </a>
                     </div>
-                    <p><strong class="name"><a href="#" class="text-4 pb-2 pt-2 d-block text-dark">John
-                                Doe</a></strong></p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio,
-                        gravida pelle, consectetur adipiscing elit. </p>
+                    <p><strong class="name"><a href="#" class="text-4 pb-2 pt-2 d-block text-dark">
+                                {{ session('logo')['kelurahan']->kepala }}
+                            </a></strong></p>
+                    <p>{{ session('logo')['kelurahan']->komitmen }}</p>
                 </div>
 
             </div>
