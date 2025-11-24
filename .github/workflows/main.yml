@@ -28,9 +28,7 @@ jobs:
             if [ ! -d "$DIR/.git" ]; then
               echo "Clone repo..."
               git clone --branch $BRANCH $REPO $DIR
-            else
-              
-            fi
+            
                 
             
             
