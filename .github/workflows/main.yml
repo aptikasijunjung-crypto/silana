@@ -29,10 +29,7 @@ jobs:
               echo "Clone repo..."
               git clone --branch $BRANCH $REPO $DIR
             else
-              echo "Pull update..."
-              cd $DIR
-              git reset --hard HEAD
-              git pull origin $BRANCH
+              
             fi
                 
             
