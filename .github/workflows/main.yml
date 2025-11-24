@@ -26,7 +26,7 @@ jobs:
             DIR="${{ secrets.VPS_PATH }}"
             BRANCH="deploy-github"
             cd $DIR
-            build.sh
+            git pull origin
               
                 
             
