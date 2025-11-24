@@ -24,7 +24,6 @@ jobs:
           script: |
             REPO="https://${{ secrets.GIT_TOKEN }}@github.com/aptikasijunjung-crypto/silana.git"
             DIR="${{ secrets.VPS_PATH }}"
-            CONTAINER="laravel_app"
             BRANCH="deploy-github"
             
             
