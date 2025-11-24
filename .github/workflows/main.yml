@@ -25,9 +25,15 @@ jobs:
             REPO="https://${{ secrets.GIT_TOKEN }}@github.com/aptikasijunjung-crypto/silana.git"
             DIR="${{ secrets.VPS_PATH }}"
             BRANCH="deploy-github"
-            cd $DIR
-            git pull origin
-              
+            if [ ! -d "$DIR/.git" ]; then
+              echo "Clone repo..."
+              git clone --branch $BRANCH $REPO $DIR
+            else
+              echo "Pull update..."
+              cd $DIR
+              git reset --hard HEAD
+              git pull origin $BRANCH
+            fi
                 
             
             
