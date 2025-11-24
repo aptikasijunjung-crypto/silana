@@ -1,46 +1,36 @@
-name: Build, test and deploy
+name: Deploy Laravel to VPS
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - '*'
 
 jobs:
-  build:
+  deploy:
+    name: CI/CD to VPS
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: Checkout Repo
         uses: actions/checkout@v4
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: 8.3
- 
-      - name: Create database
-        run: touch ./database/database.sqlite
-  
-      - name: Copy .env
-        run: cp .env.test .env
-
-      - name: Install app
-        run: composer install
- 
-      - name: Run migrations
-        run: php artisan migrate
- 
-      - name: Test PHPStan
-        run: ./vendor/bin/phpstan analyse
-
-      - name: Test PHPUnit
-        run: ./vendor/bin/phpunit
-
-      - name: Deploy using ssh
-        uses: appleboy/ssh-action@v1.1.0
+      - name: Deploy to VPS via SSH
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           port: ${{ secrets.VPS_PORT }}
           script: |
-            cd ${{ secrets.VPS_PATH }}
+            REPO="https://${{ secrets.GIT_TOKEN }}@github.com/aptikasijunjung-crypto/silana.git"
+            DIR="${{ secrets.VPS_PATH }}"
+            BRANCH="deploy-github"
+            cd $DIR
             ./build.sh
+              
+                
+            
+            
+            
+            
+            
