@@ -2,13 +2,13 @@
 
 namespace App\Services;
 
-use Codedge\Fpdf\Fpdf\FpdfClasses;
+use Codedge\Fpdf\Fpdf\Mc_tables;
 
 class PdfsuratServices
 {
     protected $fpdf;
 
-    public function __construct(FpdfClasses $fpdf)
+    public function __construct(Mc_tables $fpdf)
     {
         $this->fpdf = $fpdf;
     }

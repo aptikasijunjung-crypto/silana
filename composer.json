@@ -33,8 +33,7 @@
         "files": [
             "app/Helpers/my_function.php",
             "app/Helpers/tables.php",
-            "app/Helpers/modal.php",
-            "app/Classes/FpdfClasses.php"
+            "app/Helpers/modal.php"
         ],
         "psr-4": {
             "App\\": "app/",
