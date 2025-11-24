@@ -64,7 +64,7 @@ class KurangmampuController extends Controller
         ]);
     }
 
-    public function store(Request $request, PdfsuratServices $pdfsurat_services)
+    public function store(Request $request)
     {
 
         $id = 0;
