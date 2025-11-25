@@ -42,4 +42,19 @@
             $.LoadingOverlay('hide');
         }, 'json');
     });
+    $('form#proses').submit(function(e) {
+        $.LoadingOverlay('show');
+        $.post("{{ route('proses.tte.layanan') }}", $(this).serialize(), function(data) {
+            if (data.id == 0) {
+                komentar(0, 'Oppss', data.komen);
+            } else {
+                komentar(1, 'Success', data.komen);
+                $('div.lg-modal').html(data.base);
+                $("tr#baris-" + data.idx).fadeOut('slow', function(i) {
+                    $(this).remove();
+                });
+            }
+            $.LoadingOverlay('hide');
+        }, 'json');
+    });
 </script>

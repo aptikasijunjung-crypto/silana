@@ -16,11 +16,10 @@ class QrcodeServices
             QrCode::format('png')->merge('/public/img/DtVw7MuU8AEPGlJ.jpg')->color(255, 0, 0)->size(100)->generate($nomor, Storage::path('qr_codes/' . $namaqr));
         }
 
-        // $data = [
-        //     'path' => $pathqr,
-        //     'mime' => $mime
-        // ];
-        // return $data;
-        return "dd";
+        $data = [
+            'path' => $pathqr,
+            'mime' => $mime
+        ];
+        return $data;
     }
 }
