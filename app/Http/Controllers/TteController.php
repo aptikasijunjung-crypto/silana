@@ -37,7 +37,7 @@ class TteController extends Controller
         $nomor = $data->nomor;
         // $nik = $data->pejabat_nik;
 
-        // $qr = $qrcode_services->buatQR($nomor);
+        $qr = $qrcode_services->buatQR($nomor);
 
         // if (empty($request->passhprase)) {
         //     $id = 0;
