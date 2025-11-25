@@ -37,7 +37,7 @@ class PortalController extends Controller
         FROM posts a WHERE ulang=1 AND a.kelurahan_id = ?', [$data->kelurahan_id]);
 
         $categories = DB::select('select * from categories where id IN (select a.categories_id FROM posts_categories a, posts b WHERE
-                                    a.posts_id=b.id GROUP BY a.categories_id) ');
+                                    a.posts_id=b.id AND b.kelurahan_id=? GROUP BY a.categories_id) ', [$data->kelurahan_id]);
         return view('portal.index', [
             'data' => $data,
             'logo' => $logo,
