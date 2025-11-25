@@ -73,7 +73,7 @@ class TteController extends Controller
         // }
         return response()->json([
             'id' => $nomor,
-            'komen' => 'sdd',
+            'komen' => $nomor,
             'base' => 'sd',
             'idx' => 'sd'
         ]);
