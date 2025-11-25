@@ -11,7 +11,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        // $middleware->redirectGuestsTo('/');
+        $middleware->redirectGuestsTo('signin');
         // $middleware->redirectGuestsTo(
         //     fn(Request $request) =>
         //     abort(404) // Mengarahkan tamu ke halaman 404
