@@ -30,9 +30,9 @@ class TteController extends Controller
     {
 
         // $base64 = null;
-        // $data = DB::select('SELECT * FROM dokumen WHERE id=?', [$request->id])[0];
-        // $file = Storage::path('bahan/' . $data->bahan);
-        // $file_mime = Storage::mimeType('bahan/' . $data->bahan);
+        $data = DB::select('SELECT * FROM dokumen WHERE id=?', [$request->id])[0];
+        $file = Storage::path('bahan/' . $data->bahan);
+        $file_mime = Storage::mimeType('bahan/' . $data->bahan);
 
         // $nomor = $data->nomor;
         // $nik = $data->pejabat_nik;
