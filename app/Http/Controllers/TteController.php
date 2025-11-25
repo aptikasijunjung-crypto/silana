@@ -34,7 +34,7 @@ class TteController extends Controller
         $file = Storage::path('bahan/' . $data->bahan);
         $file_mime = Storage::mimeType('bahan/' . $data->bahan);
 
-        // $nomor = $data->nomor;
+        $nomor = $data->nomor;
         // $nik = $data->pejabat_nik;
 
         // $qr = $qrcode_services->buatQR($nomor);
@@ -72,7 +72,7 @@ class TteController extends Controller
         //     }
         // }
         return response()->json([
-            'id' => 0,
+            'id' => $nomor,
             'komen' => 'sdd',
             'base' => 'sd',
             'idx' => 'sd'
