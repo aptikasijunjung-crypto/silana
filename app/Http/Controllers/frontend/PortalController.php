@@ -22,19 +22,19 @@ class PortalController extends Controller
         ];
         $logo = session(['logo' => $session]);
         $berita6 = DB::select('SELECT a.id, a.title, a.image_default, a.content, a.slug
-        FROM posts a ORDER BY a.created_at DESC LIMIT 0,6');
+        FROM posts a WHERE a.kelurahan_id=? ORDER BY a.created_at DESC LIMIT 0,6', [$data->kelurahan_id]);
 
-        $berita74 = DB::select('SELECT a.id, a.title, a.image_default, a.content, a.image_large
-        FROM posts a ORDER BY a.created_at DESC LIMIT 7,4');
+        $berita74 = DB::select('SELECT a.id, a.title, a.image_default, a.content, a.image_large, a.slug
+        FROM posts a WHERE a.kelurahan_id = ? ORDER BY a.created_at DESC LIMIT 7,4', [$data->kelurahan_id]);
 
-        $popular = DB::select('SELECT a.id, a.title, a.image_square, a.content, a.created_at
-        FROM posts a ORDER BY baca DESC LIMIT 0,5');
+        $popular = DB::select('SELECT a.id, a.title, a.image_square, a.content, a.created_at, a.slug
+        FROM posts a WHERE a.kelurahan_id = ? ORDER BY baca DESC LIMIT 0,5', [$data->kelurahan_id]);
 
-        $recent = DB::select('SELECT a.id, a.title, a.image_square, a.content, a.created_at
-        FROM posts a ORDER BY rand() DESC LIMIT 0,5');
+        $recent = DB::select('SELECT a.id, a.title, a.image_square, a.content, a.created_at, a.slug
+        FROM posts a WHERE a.kelurahan_id = ? ORDER BY rand() DESC LIMIT 0,5', [$data->kelurahan_id]);
 
-        $featured = DB::select('SELECT a.id, a.title, a.image_large, a.content, a.created_at
-        FROM posts a WHERE ulang=1');
+        $featured = DB::select('SELECT a.id, a.title, a.image_large, a.content, a.created_at, a.slug
+        FROM posts a WHERE ulang=1 AND a.kelurahan_id = ?', [$data->kelurahan_id]);
 
         $categories = DB::select('select * from categories where id IN (select a.categories_id FROM posts_categories a, posts b WHERE
                                     a.posts_id=b.id GROUP BY a.categories_id) ');

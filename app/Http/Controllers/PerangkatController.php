@@ -14,11 +14,22 @@ class PerangkatController extends Controller
     public function index()
     {
         $id = Auth::user()->id;
-        $user = User::find($id);
+        // $customersWithOrders = Customer::leftJoin('orders', 'customers.id', '=', 'orders.customer_id')
+        //     ->select('customers.*', 'orders.order_date', 'orders.total_amount') // Specify columns to select
+        //     ->get();
+        // $user = User::find($id);
+
+        $user = DB::select('SELECT a.kelurahan_id, b.kelurahan_name FROM users a, kelurahan b
+                                WHERE 
+                                a.kelurahan_id=b.kelurahan_id AND
+                                a.id = ?', [$id])[0];
+
+
+
         $data = DB::select('SELECT a.id, a.name, a.nik, a.jabatan, a.email, a.kelurahan_id, a.tempat, a.tanggal, a.telp, a.photo from users a where 
                                     a.kelurahan_id=?', [$user->kelurahan_id]);
 
-        return view('modul.perangkat.home', ['data' => $data, 'kelurahan_id' => $user->kelurahan_id]);
+        return view('modul.perangkat.home', ['data' => $data, 'user' => $user]);
     }
 
     public function add()

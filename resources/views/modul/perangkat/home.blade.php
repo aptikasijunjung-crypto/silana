@@ -5,14 +5,14 @@
     <div class="card card-custom card-stretch gutter-b">
         <div class="card-header border-0 pt-5">
             <h3 class="card-title align-items-start flex-column">
-                <span class="card-label font-weight-bolder text-dark">Perangkat Desa</span>
-                <span class="text-muted mt-3 font-weight-bold font-size-sm">Desa Kampung Baru</span>
+                <span class="card-label font-weight-bolder text-dark">Perangkat</span>
+                <span class="text-muted mt-3 font-weight-bold font-size-sm">{{ $user->kelurahan_name }}</span>
             </h3>
         </div>
         <div class="card-body pt-5 pb-0 mt-n3">
             <p class="text-right">
                 <button type="button" class="btn btn-light-primary font-weight-bold mr-2 modal-perangkat" id="0"
-                    kelurahan_id="{{ $kelurahan_id }}" token="{{ csrf_token() }}"
+                    kelurahan_id="{{ $user->kelurahan_id }}" token="{{ csrf_token() }}"
                     rute="{{ route('modal.perangkat') }}">Tambah
                     Perangkat</button>
             </p>
