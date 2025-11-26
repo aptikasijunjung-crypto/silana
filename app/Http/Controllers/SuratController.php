@@ -17,7 +17,7 @@ class SuratController extends Controller
         $id = Auth::user()->id;
         $data = DB::select('SELECT a.nomor, b.tentang, b.files, b.origin_file, b.created_at, b.updated_at FROM setuju a, surat b WHERE 
                         a.nomor=b.nomor AND
-                        a.user_id=?', [$id]);
+                        b.oleh = ? ORDER BY b.created_at', [$id]);
         return view('modul.surat.home', ['data' => $data]);
     }
 

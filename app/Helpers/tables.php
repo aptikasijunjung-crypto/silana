@@ -68,10 +68,14 @@ function tabelNotifikasi($data)
         <table class='table table-striped table-bordered'>
             <thead>
                 <tr>
-                    <th class='text-center'>No</th>
-                    <th>id surat</th>
+                    <th class='text-center' width='5%'>No</th>
+                    <th class='text-center' width='7%'>Id</th>
+                    <th>Dibuat Oleh</th>
+                    <th class='text-center' width='15%'>Tanggal</th>
+                    <th class='text-center' width='10%'>Jam</th>
                     <th>Tentang</th>
-                    <th>Draft</th>                 
+                    
+                    <th class='text-center' width='5%'>TTE</th>                 
                 </tr>
             </thead>
             <tbody>";
@@ -80,9 +84,12 @@ function tabelNotifikasi($data)
         $t .= "
         <tr>
             <td class='text-center'>" . $no . ".</td>
-            <td>" . $i->nomor . "</td>
-            <td>" . $i->tentang . "</td>
-            <td>
+            <td class='text-center'>" . $i->nomor . "</td>
+            <td>" . $i->OLEH . "</td>
+            <td class='text-center'>" . tgl_indonesia(substr($i->created_at, 0, 10)) . "</td>
+            <td class='text-center'>" . substr($i->created_at, 11, 8) . "</td>
+            <td>" . $i->tentang . "</td>        
+            <td class='text-center'>
                 <button type='button' 
                 class='btn btn-light-primary font-weight-bolder btn-sm modal-tte' id='" . $i->id . "'>Proses</button>
             </td>

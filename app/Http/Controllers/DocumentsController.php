@@ -17,7 +17,8 @@ class DocumentsController extends Controller
 {
     public function index()
     {
-        return view('modul.dokumen.home');
+        $id = Auth::user()->id;
+        return view('modul.dokumen.home', ['id' => $id]);
     }
 
     public function store(Request $request)
@@ -77,6 +78,7 @@ class DocumentsController extends Controller
                 }
                 Surat::insert([
                     'nomor' => $request->nomor,
+                    'oleh' => $request->oleh,
                     'tentang' => $request->tentang,
                     'files' => $simpan,
                     'created_at' => Carbon::now(),
@@ -163,7 +165,9 @@ class DocumentsController extends Controller
     {
         $id = Auth::user()->id;
 
-        $data = DB::select('SELECT a.id, a.nomor, b.tentang, b.files FROM setuju a, surat b
+        $data = DB::select('SELECT a.id, a.nomor, b.created_at, b.tentang, b.files, c.name AS OLEH 
+                                FROM setuju a, surat b 
+                                LEFT JOIN users c ON b.oleh=c.id
                                 WHERE 
                                 a.nomor=b.nomor AND
                                 a.user_id=? and a.urut=b.on_check
@@ -249,7 +253,7 @@ class DocumentsController extends Controller
                                     'origin_file' => $surat
                                 ]);
                             $umpan_balik = tampilPDF(base64_encode(Storage::get($surat)));
-                            $judul = "Selamat Data Berhasil di tanda tangani";
+                            $judul = "<div class='alert alert-success'>Selamat Data Berhasil di tanda tangani</div>";
                         }
                     }
                 } else {

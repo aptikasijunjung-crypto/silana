@@ -4,6 +4,7 @@
 @section('konten')
     <form id="proses" onsubmit="return false;" enctype="multipart/form-data">
         @csrf
+        <input type="hidden" value="{{ $id }}" name="oleh" id="oleh">
         <div class="row">
             <div class="col-md-5">
                 <div class="card card-custom gutter-b example example-compact">

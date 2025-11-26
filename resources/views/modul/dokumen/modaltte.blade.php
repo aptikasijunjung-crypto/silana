@@ -6,7 +6,7 @@
         </iframe>
     </div>
     <div class="col-md-6">
-        <?= alertBody('Tidakan kebijakan yang akan di ambil') ?>
+        <?= alertBody('Tindakan kebijakan yang akan di ambil') ?>
         <form id="proses-tte" onsubmit="return false;">
             @csrf
             <input type="hidden" name="kode" value="{{ $data->TTE }}">
@@ -41,7 +41,7 @@
 
 <script>
     $('form#proses-tte').submit(function(e) {
-
+        $.LoadingOverlay('show');
         $.post("{{ route('proses.tte') }}", $(this).serialize(), function(data) {
             if (data.id == 0) {
                 komentar(0, "Opps", data.komen);
@@ -49,8 +49,10 @@
                 komentar(1, "Success", data.komen);
                 $('div.card-body').html(data.umpan);
                 $('h3.card-title').html(data.judul);
-                $('#lgModal').modal('hide');
+                $('#xlModal').modal('hide');
+
             }
+            $.LoadingOverlay('hide');
         }, "json");
     });
 

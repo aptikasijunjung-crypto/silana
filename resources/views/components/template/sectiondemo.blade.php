@@ -46,255 +46,56 @@
             </div>
 
         </div>
-        <div class="row portfolio-list sort-destination sort-destination-margin sort-destination-items-hardware-acc overflow-visible mt-4"
+        <div class="row portfolio-list sort-destination sort-destination-margin sort-destination-items-hardware-acc overflow-visible mt-4 appear-animation animated fadeInUpShorter appear-animation-visible"
+            data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200" style="animation-delay: 200ms;""
             data-sort-id="portfolio">
 
-            <div class="col-sm-6 col-md-4 col-lg-3 isotope-item classic" data-sort-search="classic">
-                <div class="portfolio-item hover-effect-1 text-center">
-                    <span class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-                        <span class="thumb-info-wrapper thumb-info-wrapper-demos thumb-info-wrapper-link m-0"
-                            style="background-image: url(img/previews/preview-classic.jpg);">
-                            <a href="index-classic.html" target="_blank"></a>
-                        </span>
-                    </span>
-                    <h5 class="text-color-dark text-capitalize mt-3">Classic</h5>
-                </div>
-            </div>
 
-            <div class="col-sm-6 col-md-4 col-lg-3 z-index-hover-1 isotope-item business new">
-                <div class="portfolio-item hover-effect-1 text-center portfolio-item-new">
 
-                    <div class="owl-carousel nav-dark show-nav-hover show-nav-hover-pos-2 nav-rounded nav-md"
-                        data-plugin-options="{'items': 1, 'margin': 10, 'loop': true, 'nav': true, 'dots': false, 'autoplay': true, 'autoplayTimeout': 4000, 'autoplayHoverPause': true}">
-                        <span class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-                            <span
-                                class="thumb-info-wrapper thumb-info-wrapper-demos thumb-info-wrapper-link lazyload m-0"
-                                data-bg-src="img/previews/preview-accounting-1.jpg">
-                                <a href="demo-accounting-1.html" target="_blank"></a>
-                            </span>
-                        </span>
-
-                        <span class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-                            <span
-                                class="thumb-info-wrapper thumb-info-wrapper-demos thumb-info-wrapper-link lazyload m-0"
-                                data-bg-src="img/previews/preview-accounting-1-61CCEF.jpg">
-                                <a href="demo-accounting-1.html?colorPrimary=61CCEF&colorSecondary=2F7B95&colorTertiary=1D2F35&colorQuaternary=F7F0E7&showStyleSwitcher=true&hideStyleSwitcherAfterShow=true&addImagesSuffix=true&addURLParams=true"
-                                    target="_blank"></a>
-                            </span>
-                        </span>
-
-                        <span class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-                            <span
-                                class="thumb-info-wrapper thumb-info-wrapper-demos thumb-info-wrapper-link lazyload m-0"
-                                data-bg-src="img/previews/preview-accounting-1-FFC8BD.jpg">
-                                <a href="demo-accounting-1.html?colorPrimary=FFC8BD&colorSecondary=FE4A23&colorTertiary=010A44&colorQuaternary=FEF2ED&showStyleSwitcher=true&hideStyleSwitcherAfterShow=true&addImagesSuffix=true&addURLParams=true"
-                                    target="_blank"></a>
-                            </span>
-                        </span>
-
-                        <span class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-                            <span
-                                class="thumb-info-wrapper thumb-info-wrapper-demos thumb-info-wrapper-link lazyload m-0"
-                                data-bg-src="img/previews/preview-accounting-1-E8D8D9.jpg">
-                                <a href="demo-accounting-1.html?colorPrimary=E8D8D9&colorSecondary=D90A2C&colorTertiary=4D4D4D&colorQuaternary=FDF1F3&showStyleSwitcher=true&hideStyleSwitcherAfterShow=true&addImagesSuffix=true&addURLParams=true"
-                                    target="_blank"></a>
-                            </span>
-                        </span>
-
-                        <span class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-                            <span
-                                class="thumb-info-wrapper thumb-info-wrapper-demos thumb-info-wrapper-link lazyload m-0"
-                                data-bg-src="img/previews/preview-accounting-1-DABDA9.jpg">
-                                <a href="demo-accounting-1.html?colorPrimary=DABDA9&colorSecondary=B57C53&colorTertiary=221814&colorQuaternary=F7F0E7&showStyleSwitcher=true&hideStyleSwitcherAfterShow=true&addImagesSuffix=true&addURLParams=true"
-                                    target="_blank"></a>
-                            </span>
-                        </span>
-
-                        <span class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-                            <span
-                                class="thumb-info-wrapper thumb-info-wrapper-demos thumb-info-wrapper-link lazyload m-0"
-                                data-bg-src="img/previews/preview-accounting-1-F7DDA7.jpg">
-                                <a href="demo-accounting-1.html?colorPrimary=F7DDA7&colorSecondary=EBA514&colorTertiary=34291D&colorQuaternary=F7F0E7&showStyleSwitcher=true&hideStyleSwitcherAfterShow=true&addImagesSuffix=true&addURLParams=true"
-                                    target="_blank"></a>
-                            </span>
-                        </span>
-
+            <div class="card flip-card text-center rounded-0 col-sm-6 col-md-4 col-lg-3">
+                <div class="flip-front p-5">
+                    <div class="flip-content my-4">
+                        <strong
+                            class="font-weight-extra-bold text-color-dark line-height-1 text-13 mb-3 d-inline-block">01</strong>
+                        <h4 class="font-weight-bold text-color-primary text-4">FIRST STEP</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa
+                            enim.
+                            Nullam id varius.</p>
                     </div>
-
-                    <h5 class="text-color-dark text-capitalize mt-3">Accounting 1</h5>
                 </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 isotope-item business new" data-sort-search="Marketing 1">
-                <div class="portfolio-item hover-effect-1 text-center portfolio-item-new">
-                    <span class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-                        <span class="thumb-info-wrapper thumb-info-wrapper-demos thumb-info-wrapper-link m-0"
-                            style="background-image: url(img/previews/preview-marketing-1.jpg);">
-                            <a href="demo-marketing-1.html" target="_blank"></a>
-                        </span>
-                    </span>
-                    <h5 class="text-color-dark text-capitalize mt-3">Marketing 1</h5>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 z-index-hover-1 isotope-item business">
-                <div class="portfolio-item hover-effect-1 text-center">
-
-                    <div class="owl-carousel nav-dark show-nav-hover show-nav-hover-pos-2 nav-rounded nav-md"
-                        data-plugin-options="{'items': 1, 'margin': 10, 'loop': true, 'nav': true, 'dots': false, 'autoplay': true, 'autoplayTimeout': 5000, 'autoplayHoverPause': true}">
-                        <span class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-                            <span
-                                class="thumb-info-wrapper thumb-info-wrapper-demos thumb-info-wrapper-link lazyload m-0"
-                                data-bg-src="img/previews/preview-auto-services.jpg">
-                                <a href="demo-auto-services.html" target="_blank"></a>
-                            </span>
-                        </span>
-
-                        <span class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-                            <span
-                                class="thumb-info-wrapper thumb-info-wrapper-demos thumb-info-wrapper-link lazyload m-0"
-                                data-bg-src="img/previews/preview-auto-services-DA1526.jpg">
-                                <a href="demo-auto-services.html?colorPrimary=DA1526&colorSecondary=EC2738&colorTertiary=F9F9F9&colorQuaternary=121212&showStyleSwitcher=true&hideStyleSwitcherAfterShow=true&addImagesSuffix=true&addURLParams=true"
-                                    target="_blank"></a>
-                            </span>
-                        </span>
-
-                        <span class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-                            <span
-                                class="thumb-info-wrapper thumb-info-wrapper-demos thumb-info-wrapper-link lazyload m-0"
-                                data-bg-src="img/previews/preview-auto-services-F24E25.jpg">
-                                <a href="demo-auto-services.html?colorPrimary=F24E25&colorSecondary=F9523D&colorTertiary=F9F9F9&colorQuaternary=121212&showStyleSwitcher=true&hideStyleSwitcherAfterShow=true&addImagesSuffix=true&addURLParams=true"
-                                    target="_blank"></a>
-                            </span>
-                        </span>
-
-                        <span class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-                            <span
-                                class="thumb-info-wrapper thumb-info-wrapper-demos thumb-info-wrapper-link lazyload m-0"
-                                data-bg-src="img/previews/preview-auto-services-EDB302.jpg">
-                                <a href="demo-auto-services.html?colorPrimary=EDB302&colorSecondary=FFC716&colorTertiary=F9F9F9&colorQuaternary=121212&showStyleSwitcher=true&hideStyleSwitcherAfterShow=true&addImagesSuffix=true&addURLParams=true"
-                                    target="_blank"></a>
-                            </span>
-                        </span>
-
+                <div class="flip-back d-flex align-items-center p-5"
+                    style="background-image: url(img/generic/generic-corporate-17-1.jpg); background-size: cover; background-position: center;">
+                    <div class="flip-content my-4">
+                        <h4 class="font-weight-bold text-color-light">FIRST MEETING</h4>
+                        <p class="font-weight-light text-color-light opacity-5">Lorem ipsum dolor sit amet,
+                            consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius.</p>
+                        <a href="#" class="btn btn-light btn-modern text-color-dark font-weight-bold">LEARN
+                            MORE</a>
                     </div>
-
-                    <h5 class="text-color-dark text-capitalize mt-3">Auto Services</h5>
                 </div>
             </div>
 
-            <div class="col-sm-6 col-md-4 col-lg-3 z-index-hover-1 isotope-item portfolio new">
-                <div class="portfolio-item hover-effect-1 text-center portfolio-item-new">
 
-                    <div class="owl-carousel nav-dark show-nav-hover show-nav-hover-pos-2 nav-rounded nav-md"
-                        data-plugin-options="{'items': 1, 'margin': 10, 'loop': true, 'nav': true, 'dots': false, 'autoplay': true, 'autoplayTimeout': 7000, 'autoplayHoverPause': true}">
-                        <span class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-                            <span
-                                class="thumb-info-wrapper thumb-info-wrapper-demos thumb-info-wrapper-link lazyload m-0"
-                                data-bg-src="img/previews/preview-creative-agency-2.jpg">
-                                <a href="demo-creative-agency-2.html" target="_blank"></a>
-                            </span>
-                        </span>
 
-                        <span class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-                            <span
-                                class="thumb-info-wrapper thumb-info-wrapper-demos thumb-info-wrapper-link lazyload m-0"
-                                data-bg-src="img/previews/preview-creative-agency-2-0088CC.jpg">
-                                <a href="demo-creative-agency-2.html?colorPrimary=0088CC&colorSecondary=0169fe&colorTertiary=F9F9F9&colorQuaternary=121212&showStyleSwitcher=true&hideStyleSwitcherAfterShow=true&addImagesSuffix=true&addURLParams=true"
-                                    target="_blank"></a>
-                            </span>
-                        </span>
 
-                        <span class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-                            <span
-                                class="thumb-info-wrapper thumb-info-wrapper-demos thumb-info-wrapper-link lazyload m-0"
-                                data-bg-src="img/previews/preview-creative-agency-2-FF7049.jpg">
-                                <a href="demo-creative-agency-2.html?colorPrimary=FF7049&colorSecondary=FF5B2F&colorTertiary=F9F9F9&colorQuaternary=121212&showStyleSwitcher=true&hideStyleSwitcherAfterShow=true&addImagesSuffix=true&addURLParams=true"
-                                    target="_blank"></a>
-                            </span>
-                        </span>
 
-                    </div>
 
-                    <h5 class="text-color-dark text-capitalize mt-3">Creative Agency 2</h5>
-                </div>
-            </div>
 
-            <div class="col-sm-6 col-md-4 col-lg-3 isotope-item business" data-sort-search="corporate 8">
-                <div class="portfolio-item hover-effect-1 text-center">
-                    <span class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-                        <span class="thumb-info-wrapper thumb-info-wrapper-demos thumb-info-wrapper-link m-0"
-                            style="background-image: url(img/previews/preview-corporate-8.jpg);">
-                            <a href="index-corporate-8.html" target="_blank"></a>
-                        </span>
-                    </span>
-                    <h5 class="text-color-dark text-capitalize mt-3">Corporate 8</h5>
-                </div>
-            </div>
 
-            <div class="col-sm-6 col-md-4 col-lg-3 z-index-hover-1 isotope-item business">
-                <div class="portfolio-item hover-effect-1 text-center">
 
-                    <div class="owl-carousel nav-dark show-nav-hover show-nav-hover-pos-2 nav-rounded nav-md"
-                        data-plugin-options="{'items': 1, 'margin': 10, 'loop': true, 'nav': true, 'dots': false, 'autoplay': true, 'autoplayTimeout': 9000, 'autoplayHoverPause': true}">
-                        <span class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-                            <span
-                                class="thumb-info-wrapper thumb-info-wrapper-demos thumb-info-wrapper-link lazyload m-0"
-                                data-bg-src="img/previews/preview-business-consulting-3.jpg">
-                                <a href="demo-business-consulting-3.html" target="_blank"></a>
-                            </span>
-                        </span>
 
-                        <span class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-                            <span
-                                class="thumb-info-wrapper thumb-info-wrapper-demos thumb-info-wrapper-link lazyload m-0"
-                                data-bg-src="img/previews/preview-business-consulting-3-0088CC.jpg">
-                                <a href="demo-business-consulting-3.html?colorPrimary=0088CC&colorSecondary=149CE0&colorTertiary=0074B8&colorQuaternary=383F48&showStyleSwitcher=true&hideStyleSwitcherAfterShow=true&addImagesSuffix=true&addURLParams=true"
-                                    target="_blank"></a>
-                            </span>
-                        </span>
 
-                    </div>
 
-                    <h5 class="text-color-dark text-capitalize mt-3">Business Consulting 3</h5>
-                </div>
-            </div>
 
-            <div class="col-sm-6 col-md-4 col-lg-3 isotope-item business" data-sort-search="startup agency">
-                <div class="portfolio-item hover-effect-1 text-center">
-                    <span class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-                        <span class="thumb-info-wrapper thumb-info-wrapper-demos thumb-info-wrapper-link m-0"
-                            style="background-image: url(img/previews/preview-startup-agency.jpg);">
-                            <a href="demo-startup-agency.html" target="_blank"></a>
-                        </span>
-                    </span>
-                    <h5 class="text-color-dark text-capitalize mt-3">Startup Agency</h5>
-                </div>
-            </div>
 
-            <div class="col-sm-6 col-md-4 col-lg-3 isotope-item business" data-sort-search="architecture 2">
-                <div class="portfolio-item hover-effect-1 text-center">
-                    <span class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-                        <span class="thumb-info-wrapper thumb-info-wrapper-demos thumb-info-wrapper-link m-0"
-                            style="background-image: url(img/previews/preview-architecture-2.jpg);">
-                            <a href="demo-architecture-2.html" target="_blank"></a>
-                        </span>
-                    </span>
-                    <h5 class="text-color-dark text-capitalize mt-3">Architecture 2</h5>
-                </div>
-            </div>
 
-            <div class="col-sm-6 col-md-4 col-lg-3 isotope-item business" data-sort-search="cleaning services">
-                <div class="portfolio-item hover-effect-1 text-center">
-                    <span class="thumb-info thumb-info-no-zoom thumb-info-no-overlay thumb-info-no-bg">
-                        <span class="thumb-info-wrapper thumb-info-wrapper-demos thumb-info-wrapper-link m-0"
-                            style="background-image: url(img/previews/preview-cleaning-services.jpg);">
-                            <a href="demo-cleaning-services.html" target="_blank"></a>
-                        </span>
-                    </span>
-                    <h5 class="text-color-dark text-capitalize mt-3">Cleaning Services</h5>
-                </div>
-            </div>
+
+
+
+
+
+
+
 
             <div class="col-sm-6 col-md-4 col-lg-3 isotope-item business" data-sort-search="insurance">
                 <div class="portfolio-item hover-effect-1 text-center">
