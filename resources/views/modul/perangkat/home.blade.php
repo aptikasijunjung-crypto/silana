@@ -45,6 +45,7 @@
 @endsection
 
 @section('jquery')
+    <script src="{{ asset('assets/js/jquery.maskedinput.js') }}"></script>
     <script>
         $(document).on('click', 'button.modal-perangkat', function(e) {
             $.LoadingOverlay('show');

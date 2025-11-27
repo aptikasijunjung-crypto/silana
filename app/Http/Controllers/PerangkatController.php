@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\{Auth, DB, Hash, Storage};
 use Illuminate\Support\Str;
-use App\Models\{Akses, User};
+use App\Models\{Akses, Kelurahan, User};
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 
@@ -72,24 +72,41 @@ class PerangkatController extends Controller
                     $image->save(Storage::path('photos/' . $namafile));
 
                     $password  = Hash::make($request->password);
-                    $simpan = DB::insert(
-                        'insert into users (kelurahan_id,akses_id, nik, jabatan, name, tempat, tanggal, email, password, is_active, photo, telp ) 
-                            values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-                        [
-                            $request->kelurahan_id,
-                            $request->akses_id,
-                            $request->nik,
-                            $request->jabatan,
-                            $request->name,
-                            $request->tempat,
-                            $request->tanggal,
-                            $request->email,
-                            $password,
-                            1,
-                            $namafile,
-                            $request->telp
-                        ]
-                    );
+                    // $simpan = DB::insert(
+                    //     'insert into users (kelurahan_id,akses_id, nik, jabatan, name, tempat, tanggal, email, password, is_active, photo, telp ) 
+                    //         values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                    //     [
+                    //         $request->kelurahan_id,
+                    //         $request->akses_id,
+                    //         $request->nik,
+                    //         $request->jabatan,
+                    //         $request->name,
+                    //         $request->tempat,
+                    //         $request->tanggal,
+                    //         $request->email,
+                    //         $password,
+                    //         1,
+                    //         $namafile,
+                    //         $request->telp
+                    //     ]
+                    // );
+
+                    User::create([
+                        'kelurahan_id' => $request->kelurahan_id,
+                        'akses_id' => $request->akses_id,
+                        'nik' => $request->nik,
+                        'jabatan_id' => $request->jabatan_id,
+                        'jabatan' => $request->jabatan,
+                        'name' => $request->name,
+                        'tempat' => $request->tempat,
+                        'tanggal' => $request->tanggal,
+                        'email' => $request->email,
+                        'password' => $password,
+                        'is_active' => 1,
+                        'photo' => $namafile,
+                        'telp' => $request->telp,
+                    ]);
+
 
                     $data = DB::select('select a.id, a.name, a.nik, a.jabatan, a.email, a.tempat, a.tanggal,
                                     a.kelurahan_id, a.photo, a.telp from users a where 
@@ -200,6 +217,7 @@ class PerangkatController extends Controller
         $data_akses = Akses::all();
         $kode = $request->id;
         $kelurahan_id = $request->kelurahan_id;
+        $kelurahan = Kelurahan::where('kelurahan_id', $kelurahan_id)->first();
         if (empty($kode)) {
             $data = [];
         } else {
@@ -207,7 +225,7 @@ class PerangkatController extends Controller
         }
         return view(
             'modul.perangkat.modal',
-            ['data_akses' => $data_akses, 'kode' => $kode, 'data' => $data, 'kelurahan_id' => $kelurahan_id]
+            ['data_akses' => $data_akses, 'kode' => $kode, 'data' => $data, 'kelurahan_id' => $kelurahan_id, 'kelurahan' => $kelurahan]
         );
     }
 }

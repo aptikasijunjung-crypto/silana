@@ -621,6 +621,24 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label text-right">NIK</label>
+                                    <div class="col-lg-9 col-xl-6">
+                                        <div class="input-group input-group-lg input-group-solid">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="la la-chalkboard-teacher"></i>
+                                                </span>
+                                            </div>
+                                            <input type="text" class="form-control form-control-lg form-control-solid"
+                                                name="nik" id="nik" value="{{ $data->nik }}"
+                                                placeholder="N I K">
+                                        </div>
+                                        <span class="form-text text-muted">Anda dapat merubah NIK sesuai dengan
+                                            NIK pimpinan instansi anda</span>
+                                    </div>
+                                </div>
+
                                 <div class="separator separator-dashed my-10"></div>
                                 <!--begin::Heading-->
                                 <div class="row">
