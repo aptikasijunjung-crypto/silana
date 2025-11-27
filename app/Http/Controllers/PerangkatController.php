@@ -126,6 +126,7 @@ class PerangkatController extends Controller
                             DB::table('users')->where('id', $request->kode)->update([
                                 'nik' => $request->nik,
                                 'name' => $request->name,
+                                'jabatan_id' => $request->jabatan_id,
                                 'jabatan' => $request->jabatan,
                                 'email' => $request->email,
                                 'tempat' => $request->tempat,
@@ -142,6 +143,7 @@ class PerangkatController extends Controller
                             DB::table('users')->where('id', $request->kode)->update([
                                 'nik' => $request->nik,
                                 'name' => $request->name,
+                                'jabatan_id' => $request->jabatan_id,
                                 'jabatan' => $request->jabatan,
                                 'email' => $request->email,
                                 'tempat' => $request->tempat,
@@ -166,6 +168,7 @@ class PerangkatController extends Controller
                                 DB::table('users')->where('id', $request->kode)->update([
                                     'nik' => $request->nik,
                                     'name' => $request->name,
+                                    'jabatan_id' => $request->jabatan_id,
                                     'jabatan' => $request->jabatan,
                                     'email' => $request->email,
                                     'tempat' => $request->tempat,
@@ -184,6 +187,7 @@ class PerangkatController extends Controller
                                 DB::table('users')->where('id', $request->kode)->update([
                                     'nik' => $request->nik,
                                     'name' => $request->name,
+                                    'jabatan_id' => $request->jabatan_id,
                                     'jabatan' => $request->jabatan,
                                     'email' => $request->email,
                                     'tempat' => $request->tempat,

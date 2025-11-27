@@ -47,7 +47,7 @@
                 [$kelurahan->tipe],
             );
         @endphp
-        <?= cKombo('jabatan_id', '* Pilih Jabatan', 'id', 'name', $combo_jabatan, '#') ?>
+        <?= cKombo('jabatan_id', '* Pilih Jabatan', 'id', 'name', $combo_jabatan, $kode == 0 ? '#' : $data->jabatan_id) ?>
     </div>
 
     <div class="form-group">
