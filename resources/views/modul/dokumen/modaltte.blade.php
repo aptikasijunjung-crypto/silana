@@ -4,7 +4,7 @@
             Your browser does not support PDFs. Please download the PDF to view it: <a
                 href="data:application/pdf;base64,{{ $pdf }}">Download PDF</a>
         </iframe> --}}
-        <div class="pdfjs-viewer" pdf-document="data:application/pdf;base64,{{ $pdf }}" initial-zoom="fit"></div>
+        {{-- <div class="pdfjs-viewer" pdf-document="data:application/pdf;base64,{{ $pdf }}" initial-zoom="fit"></div> --}}
     </div>
     <div class="col-md-6">
         <?= alertBody('Tindakan kebijakan yang akan di ambil') ?>
