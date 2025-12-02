@@ -172,16 +172,14 @@ function cKombo($name, $title, $id, $ket,  $data, $ketemu)
 function TTESurat($file, $file_mime,  $qrcode, $qrcode_mime, $nik, $password)
 {
     $parameter = array(
-        // 'file' => new CURLFILE($file, 'application/pdf'),
         'file' => new CURLFILE($file, $file_mime),
-        // 'file' => 'df',
         'nik' => $nik,
         'passphrase' => $password,
         'tampilan' => 'visible',
         'image' => 'true',
         'imageTTD' => new CURLFILE($qrcode, $qrcode_mime),
-        'width' => '60',
-        'height' => '60',
+        'width' => '50',
+        'height' => '50',
         'tag_koordinat' => '^',
         'reason' => 'Sutan Mudo',
         'location' => 'Kabupaten Sijunjung'
@@ -189,7 +187,7 @@ function TTESurat($file, $file_mime,  $qrcode, $qrcode_mime, $nik, $password)
 
     $curl = curl_init();
     curl_setopt_array($curl, array(
-        CURLOPT_URL => 'http://apibsre.sijunjung.go.id/api/sign/pdf',
+        CURLOPT_URL => 'apibsre.sijunjung.go.id/api/sign/pdf',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,

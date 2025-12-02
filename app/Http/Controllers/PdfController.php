@@ -20,22 +20,14 @@ class PdfController extends Controller
     }
     public function index()
     {
-        // $this->fpdf->AddPage();
-        // $this->fpdf->SetFont('Arial', 'B', 16);
-        // $this->fpdf->Cell(40, 10, 'Hello from Laravel FPDF!');
-        // $this->fpdf->Output();
-
-
-        $this->fpdf->AddPage();
-        $this->fpdf->SetFont('Arial', '', 14);
-        $this->fpdf->Cell(40, 10, 'Hello from Laravel FPDF!');
-        $this->fpdf->setXY(10, 50);
-        $this->fpdf->SetWidths(array(10, 10));
-        $this->fpdf->Row(array("sds", "sd"));
-        $this->fpdf->Row(array("sds", "sd"));
-        $this->fpdf->Row(array("sds", "sd"));
-        $this->fpdf->Row(array("sds", "sd"));
-        $this->fpdf->Output();
-        exit;
+        $response = TTESurat(
+            "/Users/fitriadi/Desktop/bc silana/silana/storage/app/private/bahan/aa9f0524-c871-4316-917f-720c331eeb1e.pdf",
+            "application/pdf",
+            "/Users/fitriadi/Desktop/bc silana/silana/storage/app/private/qr_codes/0527282812.png",
+            "image/png",
+            "1371026505830006",
+            "2020%Asli"
+        );
+        return $response;
     }
 }

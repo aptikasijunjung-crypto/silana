@@ -45,6 +45,7 @@ class TteController extends Controller
         } else {
             $response = TTESurat($file, $file_mime,  $qr['path'], $qr['mime'], $nik, $request->passhprase);
             $jd = json_decode($response);
+
             if (isset($jd->status_code)) {
                 $id = 0;
                 $komen = $jd->error;

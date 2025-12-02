@@ -85,13 +85,9 @@ class DocumentsController extends Controller
                     'on_check' => 0
                 ]);
                 $source = Storage::get($simpan);
-                $output = '<div class="alert alert-primary" role="alert">Dokumen Berhasil di Upload!</div>
-                            <iframe src="data:application/pdf;base64,' . base64_encode($source) . '"
-                            width="100%" height="600px" frameborder="0">
-                            Your browser does not support PDFs. Please download the PDF to view it: <a
-                                href="data:application/pdf;base64,' . base64_encode($source) . '">Download
-                                PDF</a>
-                        </iframe>';
+
+                $output .= '<div class="pdfjs-viewer" pdf-document="data:application/pdf;base64, ' . base64_encode($source) . '" initial-zoom="fit"></div>';
+                $output .= '<script src="' . asset('assets/js/pdfjs-viewer.js') . '"></script>';
             }
         }
 

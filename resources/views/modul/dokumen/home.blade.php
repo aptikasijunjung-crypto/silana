@@ -1,5 +1,8 @@
 @extends('template')
 
+@section('header')
+    <x-backend.pdfviewer></x-backend.pdfviewer>
+@endsection
 
 @section('konten')
     <form id="proses" onsubmit="return false;" enctype="multipart/form-data">
@@ -120,6 +123,7 @@
 
 
 @section('jquery')
+    <script src="{{ asset('assets/js/pdfjs-viewer.js') }}"></script>
     <script>
         $('form#proses').submit(function(e) {
             $.LoadingOverlay('show');

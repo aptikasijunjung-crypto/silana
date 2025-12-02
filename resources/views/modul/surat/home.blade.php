@@ -1,5 +1,9 @@
 @extends('template')
 
+@section('header')
+    <x-backend.pdfviewer></x-backend.pdfviewer>
+@endsection
+
 @section('konten')
     <div class="card card-custom card-stretch gutter-b">
         <div class="card-header border-0 pt-5">
@@ -64,6 +68,7 @@
 @endsection
 
 @section('jquery')
+    <script src="{{ asset('assets/js/pdfjs-viewer.js') }}"></script>
     <script>
         $('button.lihat-draft').click(function() {
             $('#lgModal').modal('show');
