@@ -213,11 +213,8 @@ function tampilPDF($data)
 {
     $t = null;
     $t .=  '
-    <iframe src="data:application/pdf;base64,' . $data . '" width="100%" height="600px" frameborder="0">
-                Your browser does not support PDFs. Please download the PDF to view it: <a
-                    href="data:application/pdf;base64,' . $data . '">Download PDF</a>
-            </iframe>
-    ';
+    <div class="pdfjs-viewer" pdf-document="data:application/pdf;base64,' . $data . '" initial-zoom="fit"></div>
+    <script src="' . asset('assets/js/pdfjs-viewer.js') . '"></script>';
     return $t;
 }
 

@@ -14,7 +14,7 @@ License: You must have a valid license purchased only from themeforest(the above
 @php
     $user = Auth::user()->id;
     $profilData = DB::select(
-        'SELECT a.name, a.name, a.email, a.photo, a.jabatan, b.kelurahan_name, b.text_short FROM users a
+        'SELECT  a.name, a.email, a.photo, a.jabatan, b.kelurahan_name, b.text_short FROM users a
                             LEFT JOIN kelurahan b ON a.kelurahan_id=b.kelurahan_id
                              WHERE a.id = ?',
         [$user],
@@ -25,7 +25,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 <head>
     <meta charset="utf-8" />
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ $profilData->name }}</title>
     <meta name="description"
         content="Metronic admin dashboard live demo. Check out all the features of the admin panel. A large number of settings, additional services and widgets." />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
