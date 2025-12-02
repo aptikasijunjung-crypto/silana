@@ -36,7 +36,7 @@
     </div>
 </div>
 
-<script src="assets/js/pdfjs-viewer.js"></script>
+
 <script>
     $('form#proses-tte').submit(function(e) {
         $.LoadingOverlay('show');
