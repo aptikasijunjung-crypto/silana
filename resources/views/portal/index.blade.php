@@ -2,6 +2,12 @@
 
 
 @section('kontenfront')
+    <div class="row justify-content-center">
+        <div class="col-md-12 center-block">
+            <img src="https://cdnstatic.detik.com/live/2025/11/ctarsa/251128-ctarsa-970x250.jpg" width="970" height="250"
+                alt="detikcom" class="rounded mx-auto d-block">
+        </div>
+    </div>
     <section class="section border-0 m-0 pb-3">
         <div class="container container-xl-custom">
             <div class="row pb-1">
