@@ -70,7 +70,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     <!--begin::Login Sign in form-->
                     <div class="login-signin">
                         <div class="mb-20">
-                            <h3 class="opacity-40 font-weight-normal">Sign In To Admin</h3>
+                            <h3 class="opacity-40 font-weight-normal">Sign In To Desa Digital</h3>
                             <p class="opacity-40">Enter your details to login to your account:</p>
                         </div>
                         <form class="form" method="POST" action="{{ route('login') }}" id="kt_login_signin_form">
