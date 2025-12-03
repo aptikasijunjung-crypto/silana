@@ -65,7 +65,8 @@
                                                     Travel and Gadgets!</span>
                                             </li>
                                             <li class="nav-item text-uppercase">
-                                                <a class="nav-link ps-0 pe-4 text-light" href="#">Sign In</a>
+                                                <a class="nav-link ps-0 pe-4 text-light"
+                                                    href="{{ route('signin') }}">Sign In</a>
                                             </li>
                                             <li class="nav-item text-uppercase">
                                                 <a class="nav-link ps-0 pe-4 text-light" href="about-us.html">About
