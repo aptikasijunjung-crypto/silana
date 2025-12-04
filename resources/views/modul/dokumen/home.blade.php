@@ -8,6 +8,7 @@
     <form id="proses" onsubmit="return false;" enctype="multipart/form-data">
         @csrf
         <input type="hidden" value="{{ $id }}" name="oleh" id="oleh">
+        <input type="hidden" value="{{ $id }}" name="kelurahan_id" id="kelurahan_id">
         <div class="row">
             <div class="col-md-5">
                 <div class="card card-custom gutter-b example example-compact">
@@ -186,7 +187,8 @@
                     dataType: "json",
                     type: 'get',
                     data: {
-                        term: request.term
+                        term: request.term,
+                        kelurahan_id: $("input#kelurahan_id").val()
                     },
                     success: function(data) {
                         response(data);

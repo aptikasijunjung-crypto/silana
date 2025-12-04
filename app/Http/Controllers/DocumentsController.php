@@ -18,7 +18,8 @@ class DocumentsController extends Controller
     public function index()
     {
         $id = Auth::user()->id;
-        return view('modul.dokumen.home', ['id' => $id]);
+        $data = DB::table('users')->where('id', $id)->get()->first();
+        return view('modul.dokumen.home', ['id' => $id, 'data' => $data]);
     }
 
     public function store(Request $request)
@@ -153,7 +154,9 @@ class DocumentsController extends Controller
     public function autopejabat(Request $request)
     {
         $term = '%' . $request->term . '%';
-        $data = DB::select("select name AS label, id as value, jabatan, nik from users where CONCAT_WS(',', name, email) LIKE ? LIMIT 0,10", [$term]);
+
+        $data = DB::select("SELECT name AS label, id as value, jabatan, nik from users where CONCAT_WS(',', name, email) LIKE ? 
+                                AND kelurahan_id=? LIMIT 0,10", [$term, $request->kelurahan_id]);
         return response()->json($data);
     }
 
