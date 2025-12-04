@@ -25,6 +25,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/box/tte/{id}', 'tte')->name('box.tte');
         Route::post('/signature', 'signature')->name('signature.surat');
         Route::post('/surat/lihat/draft', 'viewdraft')->name('surat.lihat.draft');
+        Route::post('/surat/modal/hapus/surat', 'modalhapus')->name('modal.hapus.surat');
+        Route::post('/surat/proses/hapus/surat', 'hapus')->name('proses.hapus.surat');
     });
     Route::get('/qrcode', [KiercodeController::class, 'index']);
 
@@ -82,6 +84,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post("/profil/update", 'update')->name('profil.update');
         Route::post("/profil/ganti/banner", 'gantibanner')->name('ganti.banner');
         Route::post("/profil/ganti/logo", 'gantilogo')->name('ganti.logo');
+    });
+    Route::controller(PdfController::class)->group(function () {
+        Route::get("/download/pdf/{id}", 'download')->name('download.pdf');
     });
 });
 

@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\{Crypt, Storage};
 use App\Mctables;
 use FPDF;
 use Codedge\Fpdf\Fpdf\{Fpdf as FpdfFpdf, Mc_tables};
+use Illuminate\Support\Str;
+
 
 
 
@@ -29,5 +32,31 @@ class PdfController extends Controller
             "2020%Asli"
         );
         return $response;
+    }
+
+    public function download(Request $request)
+    {
+        $file =  Storage::path(Crypt::decryptString($request->id));
+
+        header("Content-Type: application/octet-stream");
+
+
+        header("Content-Disposition: attachment; filename=" . Str::uuid() . '.pdf');
+        header("Content-Type: application/download");
+        header("Content-Description: File Transfer");
+        header("Content-Length: " . filesize($file));
+
+
+        flush(); // This doesn't really matter.
+
+
+        $fp = fopen($file, "r");
+        while (!feof($fp)) {
+            echo fread($fp, 65536);
+            flush(); // This is essential for large downloads
+        }
+
+
+        fclose($fp);
     }
 }

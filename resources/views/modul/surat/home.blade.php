@@ -17,26 +17,32 @@
                 <table class="table table-striped table-bordered">
                     <thead>
                         <tr>
-                            <th class="text-center">NO</th>
-                            <th class="text-center">KODE</th>
-                            <th>TENTANG</th>
-                            <th class="text-center">DRAFT</th>
-                            <th class="text-center">DIKIRIM</th>
-                            <th class="text-center">HASIL</th>
-                            <th>DIVALIDASI</th>
+                            <th class="text-center" width="4%">Hapus</th>
+                            <th class="text-center">No</th>
+                            <th class="text-center" width="6%">Kode</th>
+                            <th>Tentang</th>
+                            <th class="text-center" width="5%">Draft</th>
+                            <th class="text-center" width="6%">Kirim</th>
+                            <th class="text-center" width="5%">Hasil</th>
+                            <th class="text-center" width="6%">Valid</th>
 
 
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($data as $item => $dt)
-                            <tr>
+                            <tr id="baris-{{ $dt->nomor }}">
+                                <td class="text-center">
+                                    <button type="button" class="btn btn-link modal-hapus-surat" id="{{ $dt->nomor }}">
+                                        <i class='icon-xl fas fa-trash-alt text-danger'></i>
+                                    </button>
+                                </td>
                                 <td class="text-center">{{ $item + 1 }}</td>
                                 <td class="text-center">{{ $dt->nomor }}</td>
                                 <td>{{ $dt->tentang }}</td>
                                 <td class="text-center"><button type="button" class="btn btn-link btn-sm lihat-draft"
                                         file="{{ $dt->files }}">
-                                        <i class="icon-2x text-danger flaticon-interface-4"></i>
+                                        <i class='icon-xl far fa-file-pdf text-warning'></i>
                                     </button></td>
                                 <td class="text-center">{{ $dt->created_at }}</td>
                                 <td class="text-center">
@@ -44,11 +50,11 @@
                                     @else
                                         <button type="button" class="btn btn-link btn-sm lihat-draft"
                                             file="{{ $dt->origin_file }}">
-                                            <i class="icon-2x text-success flaticon-interface-4"></i>
+                                            <i class='icon-xl far fa-file-pdf text-success'></i>
                                         </button>
                                     @endif
                                 </td>
-                                <td>{{ $dt->updated_at }}</td>
+                                <td class="text-center">{{ $dt->updated_at }}</td>
 
 
 
@@ -64,6 +70,7 @@
     </div>
     @php
         echo lgModal();
+        echo smModal();
     @endphp
 @endsection
 
@@ -81,6 +88,21 @@
                 function(data) {
                     $('div.lg-modal').html(data);
                 });
+        });
+
+        $("button.modal-hapus-surat").click(function(e) {
+            e.preventDefault();
+            id = $(this).attr('id');
+            csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            $('#smModal').modal('show');
+            $.post("{{ route('modal.hapus.surat') }}", {
+                id: id,
+                _token: csrfToken
+            }, function(data) {
+                $('div.sm-modal').html(data);
+            });
+
+
         });
     </script>
 @endsection

@@ -91,7 +91,9 @@ function tabelNotifikasi($data)
             <td>" . $i->tentang . "</td>        
             <td class='text-center'>
                 <button type='button' 
-                class='btn btn-light-primary font-weight-bolder btn-sm modal-tte' id='" . $i->id . "'>Proses</button>
+                class='btn btn-link  modal-tte' id='" . $i->id . "'>
+                    <i class='icon-2x text-primary flaticon-edit-1'></i>
+                </button>
             </td>
             
         </tr>
@@ -224,7 +226,7 @@ function tabelLayananKurangMampu($data)
             <td class='text-center'>" . $i->alasan_name . "</td>
             <td class='text-center'>
                 <button type='button' class='btn btn-link btn-sm lihat-draft' file='bahan/" . $i->bahan . "'>
-                    <i class='icon-2x text-warning flaticon-file'></i>
+                    <i class='icon-xl far fa-file-pdf text-warning'></i>
                 </button>
             </td>
             <td class='text-center'>" . $i->created_at . "</td>";
@@ -233,14 +235,14 @@ function tabelLayananKurangMampu($data)
         } else {
             $t .= "<td class='text-center'>
                     <button type='button' class='btn btn-link btn-sm lihat-draft' file='" . $i->hasil . "'>
-                        <i class='icon-2x text-success flaticon-list'></i>
+                        <i class='icon-xl far fa-file-pdf text-success'></i>
                     </button>
                     </td>";
         }
         $t .= "<td class='text-center'>" . $i->updated_at . "</td>
                 <td class='text-center'>
                     <button type='button' class='btn btn-link modal-delete' id='" . $i->id . "'>
-                        <i class='icon-2x text-danger flaticon-delete'></i>
+                        <i class='icon-xl fas fa-trash-alt text-danger'></i>
                     </button>
                 </td>";
 
@@ -304,3 +306,4 @@ function tabelPosts($data)
     ";
     return $t;
 }
+

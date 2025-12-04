@@ -218,6 +218,9 @@ function tampilPDF($data)
     return $t;
 }
 
+
+
+
 function facebook_time_ago($timestamp)
 {
     $time_ago = strtotime($timestamp);
