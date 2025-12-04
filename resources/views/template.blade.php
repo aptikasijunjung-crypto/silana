@@ -62,8 +62,8 @@ License: You must have a valid license purchased only from themeforest(the above
     <!--begin::Header Mobile-->
     <div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
         <!--begin::Logo-->
-        <a href="index.html">
-            <img alt="Logo" src="{{ asset('assets/media/logos/logo-light.png') }}" />
+        <a href="{{ route('dashboard') }}" style="color: #FFFFFF;">
+            {{ $profilData->text_short }}
         </a>
         <!--end::Logo-->
         <!--begin::Toolbar-->

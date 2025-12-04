@@ -103,8 +103,8 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                    <a class="dropdown-item" href="index.html">
-                        Landing Page
+                    <a class="dropdown-item" href="#">
+                        Struktur Organisasi
                     </a>
                 </li>
                 <li>
@@ -166,6 +166,12 @@
                 </li>
             </ul>
         </li>
+        <li class="dropdown ms-0">
+            <a class="dropdown-item" href="#">
+                Pustaka Digital
+            </a>
+        </li>
+
         <li class="dropdown ms-0">
             <a class="dropdown-item dropdown-toggle" href="#">
                 KONTAK

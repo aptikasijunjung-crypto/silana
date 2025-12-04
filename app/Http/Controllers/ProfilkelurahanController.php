@@ -12,7 +12,7 @@ class ProfilkelurahanController extends Controller
         $id = Auth::user()->kelurahan_id;
         $data = DB::select('select a.kelurahan_id, a.kelurahan_name, b.kecamatan_name, c.kota_name,
                                 a.website, a.email, a.alamat, a.kepala, a.kepalaid, a.nik, a.jabatan,
-                                a.banner, a.logo
+                                a.banner, a.logo, a.komitmen, a.slug
                                 FROM kelurahan a, kecamatan b, kota c WHERE
                                 a.kecamatan_id=b.kecamatan_id AND
                                 b.kota_id=c.kota_id AND
@@ -31,6 +31,8 @@ class ProfilkelurahanController extends Controller
             'kepalaid' => $request->kepalaid,
             'nik' => $request->nik,
             'jabatan' => $request->jabatan,
+            'komitmen' => $request->komitmen,
+            'slug' => strtolower(str_replace(' ', '-', $request->slug))
 
         ]);
 
