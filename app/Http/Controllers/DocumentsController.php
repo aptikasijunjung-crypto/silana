@@ -156,7 +156,7 @@ class DocumentsController extends Controller
         $term = '%' . $request->term . '%';
 
         $data = DB::select("SELECT name AS label, id as value, jabatan, nik from users where CONCAT_WS(',', name, email) LIKE ? 
-                                AND kelurahan_id=? LIMIT 0,10", [$term, $request->kelurahan_id]);
+                                AND kelurahan_id = ? LIMIT 0,10", [$term, $request->kelurahan_id]);
         return response()->json($data);
     }
 
