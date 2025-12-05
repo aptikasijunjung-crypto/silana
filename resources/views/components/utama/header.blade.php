@@ -4,14 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Portal Nagari</title>
+    <title>Desa Digital</title>
 
     <meta name="keywords" content="WebSite Template" />
     <meta name="description" content="Porto - Multipurpose Website Template">
     <meta name="author" content="okler.net">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{ 'frontend/' }}img/favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 
     <!-- Mobile Metas -->
@@ -19,7 +19,7 @@
 
     <!-- Web Fonts  -->
     <link id="googleFonts"
-        href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7COpen+Sans:400,700,800&display=swap"
+        href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400&display=swap"
         rel="stylesheet" type="text/css">
 
     <!-- Vendor CSS -->
@@ -37,11 +37,8 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/theme-blog.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/theme-shop.css') }}">
 
-    <!-- Demo CSS -->
-    <link rel="stylesheet" href="{{ asset('frontend/css/demos/demo-landing.css') }}">
-
     <!-- Skin CSS -->
-    <link id="skinCSS" rel="stylesheet" href="{{ asset('frontend/css/skins/skin-landing.css') }}">
+    <link id="skinCSS" rel="stylesheet" href="{{ asset('frontend/css/skins/default.css') }}">
 
     <!-- Theme Custom CSS -->
     <link rel="stylesheet" href="{{ asset('frontend/css/custom.css') }}">
