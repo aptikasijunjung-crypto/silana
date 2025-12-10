@@ -1186,7 +1186,8 @@
                     dataType: "json",
                     type: 'get',
                     data: {
-                        term: request.term
+                        term: request.term,
+                        kelurahan_id: $("input#kelurahan_id").val()
                     },
                     success: function(data) {
                         response(data);
