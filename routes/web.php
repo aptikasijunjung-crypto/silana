@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{AutoController, DashboardController, DocumentsController, KiercodeController, PdfController, PerangkatController, PostController, ProfileController, ProfilkelurahanController, SuratController, TteController};
 use App\Http\Controllers\backend\PendudukController;
 use App\Http\Controllers\frontend\PortalController;
-use App\Http\Controllers\surat\KurangmampuController;
+use App\Http\Controllers\surat\{KurangmampuController, UsahaController};
 
 Route::get('/', function () {
     return view('welcome');
@@ -60,6 +60,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('/kurang/mampu/modal/delete', 'modaldelete')->name('kurang.mampu.modal.delete');
         Route::post('/kurang/mampu/modal/proses/delete', 'prosesdelete')->name('kurang.mampu.proses.delete');
         Route::post('/kurang/mampu/store', 'store')->name('kurang.mampu.store');
+    });
+    Route::controller(UsahaController::class)->group(function () {
+        Route::get('/keterangan/usaha', 'index')->name('keterangan.usaha');
+        Route::post('/keterangan/usaha/modal', 'modal')->name('keterangan.usaha.modal');
+        Route::post('/keterangan/usaha/store', 'store')->name('keterangan.usaha.store');
     });
     Route::controller(AutoController::class)->group(function () {
         Route::get('/auto/perangkat', 'autoperangkat')->name('auto.perangkat');

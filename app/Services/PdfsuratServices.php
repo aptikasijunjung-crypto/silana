@@ -82,4 +82,63 @@ class PdfsuratServices
         // $this->fpdf->Output(Storage::path('draft/' . Str::uuid() . '.pdf'), 'f');
         $this->fpdf->Output($data['file'], 'f');
     }
+
+    public function PDFKetaranganUsaha($data)
+    {
+
+        $this->fpdf->AddPage();
+        $this->fpdf->logoNagari($data['kota'], $data['kecamatan'], $data['kelurahan'], $data['alamat'], $data['email'], $data['website']);
+        $this->fpdf->SetFont('times', 'b', 12);
+        $this->fpdf->ln();
+        $this->fpdf->Cell('190', 5, 'SURAT KETERANGAN USAHA', 0, 1, 'C');
+        $this->fpdf->SetFont('times', '', 12);
+        $this->fpdf->Cell('190', 5, 'Nomor : ' . $data['nomor'], 0, 1, 'C');
+        $this->fpdf->Cell('190', 5, 'Yang Bertanda tangan di bawah ini :', 0, 1, 'L');
+        $this->fpdf->setWidths(array(10, 7, 50, 5, 120));
+        $this->fpdf->NoBaris(array('', 'a.', 'Nama', ':', $data['kepala']));
+        $this->fpdf->NoBaris(array('', 'a.', 'Jabatan', ':', $data['jabatan']));
+        $this->fpdf->ln();
+        $this->fpdf->Cell('190', 5, 'Dengan Menerangkan Bahwa :', 0, 1, 'L');
+        $this->fpdf->setWidths(array(10, 7, 50, 5, 120));
+        $this->fpdf->NoBaris(array('', 'a.', 'Nama', ':', $data['ortu_name']));
+        $this->fpdf->NoBaris(array('', 'b.', 'NIK', ':', $data['ortu_nik']));
+        $this->fpdf->NoBaris(array('', 'c.', 'Tempat/Tanggal Lahir', ':', $data['ortu_tempat'] . " / " . tgl_indonesia($data['ortu_tanggal'])));
+        $this->fpdf->NoBaris(array('', 'd.', 'Jenis Kelamin', ':', $data['ortu_sex_name']));
+        $this->fpdf->NoBaris(array('', 'e.', 'Status', ':', $data['ortu_kawin_name']));
+        $this->fpdf->NoBaris(array('', 'f.', 'Pekerjaan', ':', $data['ortu_pekerjaan_name']));
+        $this->fpdf->NoBaris(array('', 'g.', 'Alamat', ':', strtoupper($data['ortu_alamat'])));
+
+        $this->fpdf->SetFont('times', '', 12);
+        $this->fpdf->SetWidths(array(190));
+        $this->fpdf->ln();
+        $this->fpdf->NoBaris(array("Nama yang tersebut di atas adalah penduduk " . $data['kelurahan'] . "  " . $data['kecamatan'] . " " . $data['kota'] . " dan memang mempunyai Usaha di " . $data['kelurahan'] . " " . $data['kecamatan'] . " dengan usaha sebagai berikut :"));
+
+        $this->fpdf->ln();
+
+        $tags = json_decode($data['tags'], true);
+        $this->fpdf->SetWidths(array(10, 180));
+        $x = 1;
+        for ($i = 0; $i < count($tags); $i++) {
+            $this->fpdf->NoBaris(array($x . '.', $tags[$i]['value']));
+            $x++;
+        }
+        $this->fpdf->ln();
+        $this->fpdf->SetFont('times', '', 12);
+        $this->fpdf->SetWidths(array(190));
+        $this->fpdf->ln();
+        $this->fpdf->NoBaris(array("Demikian surat keterangan ini kami keluarkan untuk dapat dipergunakan sebagaimana mestinya"));
+
+        $this->fpdf->SetWidths(array(110, 30, 5, 45));
+        $this->fpdf->SetAligns(array('C', 'L', 'L', 'L'));
+        $this->fpdf->ln();
+        $this->fpdf->NoBaris(array("", "Dikeluarkan di", ":",  $data['tempat']));
+        $this->fpdf->NoBaris(array("", "Pada Tanggal", ":", $data['created_at']));
+        $this->fpdf->SetWidths(array(100, 80));
+        $this->fpdf->SetAligns(array('C', 'C'));
+        $this->fpdf->NoBaris(array("", "\n\n\n^\n\n\n" . strtoupper($data['kepala']) . "\n" . strtoupper($data['jabatan'])));
+
+
+        // $this->fpdf->Output(Storage::path('draft/' . Str::uuid() . '.pdf'), 'f');
+        $this->fpdf->Output($data['file'], 'f');
+    }
 }

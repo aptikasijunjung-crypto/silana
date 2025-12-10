@@ -260,6 +260,78 @@ function tabelLayananKurangMampu($data)
     return $t;
 }
 
+function tabelKeteranganUsaha($data)
+{
+    $t = null;
+    $t .= "
+    <div class='table-responsive'>
+        <table class='table table-striped table-bordered'>
+            <thead>
+                <tr>
+                    <th class='text-center'>No</th>
+                    <th class='text-center'>Nomor</th>
+                    <th class='text-center'>Pejabat</th>
+                    <th class='text-center'>NIK</th>
+                    <th class='text-center'>Jabatan</th>
+                    <th class='text-center'>Pemohon</th>
+                    
+                    <th class='text-center'>Draft</th>
+                    <th class='text-center'>Terbit</th>
+                    <th class='text-center'>Hasil</th>
+                    <th class='text-center'>TTE</th>
+                    <th class='text-center'>Hapus</th>
+                    
+                   
+                </tr>
+            </thead>
+            <tbody>";
+    $no = 1;
+    foreach ($data as $i) {
+        $t .= "
+        <tr id='baris-" . $i->id . "'>
+            <td class='text-center'>" . $no . ".</td>
+            <td class='text-center'>" . $i->nomor . "</td>
+            <td class='text-center'>" . $i->pejabat_name . "</td>
+            <td class='text-center'>" . $i->pejabat_nik . "</td>
+            <td class='text-center'>" . $i->jabatan . "</td>
+            <td class='text-center'>" . $i->ortu_name . "</td>
+            
+            <td class='text-center'>
+                <button type='button' class='btn btn-link btn-sm lihat-draft' file='bahan/" . $i->bahan . "'>
+                    <i class='icon-xl far fa-file-pdf text-warning'></i>
+                </button>
+            </td>
+            <td class='text-center'>" . $i->created_at . "</td>";
+        if (empty($i->hasil)) {
+            $t .= "<td class='text-center'><i class='icon-2x text-dark-50 flaticon-danger'></i></td>";
+        } else {
+            $t .= "<td class='text-center'>
+                    <button type='button' class='btn btn-link btn-sm lihat-draft' file='" . $i->hasil . "'>
+                        <i class='icon-xl far fa-file-pdf text-success'></i>
+                    </button>
+                    </td>";
+        }
+        $t .= "<td class='text-center'>" . $i->updated_at . "</td>
+                <td class='text-center'>
+                    <button type='button' class='btn btn-link modal-delete' id='" . $i->id . "'>
+                        <i class='icon-xl fas fa-trash-alt text-danger'></i>
+                    </button>
+                </td>";
+
+
+        $t .= "    
+        </tr>
+            ";
+        $no++;
+    }
+    $t .= "
+            </tbody>
+        </table>
+    </div>
+    ";
+    return $t;
+}
+
 function tabelPosts($data)
 {
     $t = null;
@@ -306,4 +378,3 @@ function tabelPosts($data)
     ";
     return $t;
 }
-

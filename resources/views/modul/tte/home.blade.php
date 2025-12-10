@@ -24,7 +24,7 @@
                 <!--end::Svg Icon-->
             </span>
         </div>
-        <div class="alert-text">Pengelolaan Data Perangkat dengan baik</div>
+        <div class="alert-text">Data Layanan</div>
     </div>
 
     <div id="box-penduduk">
