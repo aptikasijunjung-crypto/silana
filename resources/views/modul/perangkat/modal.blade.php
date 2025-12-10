@@ -1,6 +1,7 @@
 <form id="proses" onsubmit="return false;">
     @csrf
     <input type="hidden" value="{{ $kode }}" name="kode" id="kode">
+    <input type="hidden" value="{{ $kelurahan->tipe }}" name="tipe" id="tipe">
     <input type="hidden" value="{{ $kelurahan_id }}" name="kelurahan_id" id="kelurahan_id">
     <input type="hidden" value="{{ $kode == 0 ? '' : $data->email }}" name="email_" id="email_">
     <div class="form-group">
@@ -34,8 +35,23 @@
             <span class="text-danger">*</span></label>
         <input type="text" class="form-control" id="password" name="password" placeholder="Password">
     </div>
+
     <div class="form-group">
         <label>Jabatan
+            <span class="text-danger">*</span></label>
+        @php
+            $combo_jabatan = DB::select(
+                'SELECT b.id, b.name  FROM bagi_jabatan a, jabatan b WHERE
+                            a.jabatan_id=b.id AND a.tipe = ? ORDER BY b.urut
+                            ',
+                [$kelurahan->tipe],
+            );
+        @endphp
+        <?= cKombo('jabatan_id', '* Pilih Jabatan', 'id', 'name', $combo_jabatan, $kode == 0 ? '#' : $data->jabatan_id) ?>
+    </div>
+
+    <div class="form-group">
+        <label>Sebutan
             <span class="text-danger">*</span></label>
         <input type="text" class="form-control" id="jabatan" name="jabatan" placeholder="Jabatan"
             value="{{ $kode == 0 ? '' : $data->jabatan }}">
@@ -93,6 +109,10 @@
 </form>
 
 <script>
+    $('input#nik').mask('9999999999999999');
+    $('select#jabatan_id').change(function() {
+        $('input#jabatan').val($('#jabatan_id option:selected').text());
+    });
     $('form#proses').submit(function(e) {
         $.LoadingOverlay('show');
         e.preventDefault();

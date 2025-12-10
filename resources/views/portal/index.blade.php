@@ -2,6 +2,12 @@
 
 
 @section('kontenfront')
+    <div class="row justify-content-center">
+        <div class="col-md-12 center-block">
+            <img src="https://cdnstatic.detik.com/live/2025/11/ctarsa/251128-ctarsa-970x250.jpg" width="970" height="250"
+                alt="detikcom" class="rounded mx-auto d-block">
+        </div>
+    </div>
     <section class="section border-0 m-0 pb-3">
         <div class="container container-xl-custom">
             <div class="row pb-1">
@@ -44,7 +50,7 @@
         <div class="row py-5">
             <div class="col-md-6 col-lg-4">
 
-                <h3 class="font-weight-bold text-3 mb-0">Popular Posts</h3>
+                <h3 class="font-weight-bold text-3 mb-0">Popular Posts bbb</h3>
 
                 <ul class="simple-post-list">
 
@@ -53,7 +59,7 @@
                             <article>
                                 <div class="post-image">
                                     <div class="img-thumbnail img-thumbnail-no-borders d-block">
-                                        <a href="blog-post.html">
+                                        <a href="{{ route('post.single', ['id' => $pop->slug]) }}">
                                             <img src="data:image/png;base64, {{ base64_encode(Storage::get('gallery/' . $pop->image_square)) }}"
                                                 class="border-radius-0" width="50" height="50"
                                                 alt="Simple Ways to Have a Pretty Face">
@@ -61,8 +67,10 @@
                                     </div>
                                 </div>
                                 <div class="post-info">
-                                    <h4 class="font-weight-normal text-3 line-height-4 mb-0"><a href="blog-post.html"
-                                            class="text-dark">{{ $pop->title }}</a></h4>
+                                    <h4 class="font-weight-normal text-3 line-height-4 mb-0">
+                                        <a href="{{ route('post.single', ['id' => $pop->slug]) }}"
+                                            class="text-dark">{{ $pop->title }}</a>
+                                    </h4>
                                     <div class="post-meta">
                                         {{ facebook_time_ago($pop->created_at) }}
                                     </div>
@@ -91,7 +99,7 @@
                         <li>
                             <div class="post-image">
                                 <div class="img-thumbnail img-thumbnail-no-borders d-block">
-                                    <a href="blog-post.html">
+                                    <a href="{{ route('post.single', ['id' => $item->slug]) }}">
                                         <img src="data:image/png;base64,{{ base64_encode(Storage::get('gallery/' . $item->image_square)) }}"
                                             class="border-radius-0" width="50" height="50"
                                             alt="Main Reasons To Stop Texting And Driving">
@@ -99,7 +107,8 @@
                                 </div>
                             </div>
                             <div class="post-info">
-                                <h4 class="font-weight-normal text-3 line-height-4 mb-0"><a href="blog-post.html"
+                                <h4 class="font-weight-normal text-3 line-height-4 mb-0"><a
+                                        href="{{ route('post.single', [$item->slug]) }}"
                                         class="text-dark">{{ $item->title }}</a></h4>
                                 <div class="post-meta">
                                     {{ facebook_time_ago($item->created_at) }}
@@ -123,7 +132,7 @@
 
                     @foreach ($ulang as $item)
                         <div>
-                            <a href="blog-post.html">
+                            <a href="{{ route('post.single', ['id' => $item->slug]) }}">
                                 <article>
                                     <div
                                         class="thumb-info thumb-info-no-borders thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom border-radius-0">
@@ -206,7 +215,7 @@
                     @foreach ($berita74 as $item)
                         <article class="post post-large">
                             <div class="post-image">
-                                <a href="blog-post.html">
+                                <a href="{{ route('post.single', ['id' => $item->slug]) }}">
                                     <img src="data:image/png;base64,{{ base64_encode(Storage::get('gallery/' . $item->image_large)) }}"
                                         class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0"
                                         alt="How to Make Friends as a Grown-Up" />
@@ -220,16 +229,10 @@
 
                             <div class="post-content">
 
-                                <h2 class="font-weight-semibold text-6 line-height-3 mb-3"><a href="blog-post.html"
-                                        class="text-color-dark text-color-hover-primary">How
-                                        to Make Friends as a
-                                        Grown-Up</a></h2>
-                                <p>Euismod atras vulputate iltricies etri elit. Class aptent taciti sociosqu ad
-                                    litora torquent per conubia nostra, per inceptos himenaeos. Nulla nunc dui,
-                                    tristique in semper vel, congue sed ligula. Nam dolor ligula, faucibus id
-                                    sodales in, auctor fringilla libero. Pellentesque pellentesque tempor tellus
-                                    eget hendrerit. Morbi id aliquam ligula. Aliquam id dui sem. Proin rhoncus
-                                    consequat nisl, eu ornare mauris tincidunt vitae. [...]</p>
+                                <h2 class="font-weight-semibold text-6 line-height-3 mb-3"><a
+                                        href="{{ route('post.single', ['id' => $item->slug]) }}"
+                                        class="text-color-dark text-color-hover-primary">{{ $item->title }}</a></h2>
+                                {{ Str::words(strip_tags($item->content), 60, '..') }}
 
                                 <div class="post-meta">
                                     <span><i class="far fa-user"></i> By <a href="#">John Doe</a> </span>
@@ -238,7 +241,8 @@
                                     <span><i class="far fa-comments"></i> <a href="#">12
                                             Comments</a></span>
                                     <span class="d-block d-sm-inline-block float-sm-end mt-3 mt-sm-0"><a
-                                            href="blog-post.html" class="btn btn-xs btn-light text-1 text-uppercase">Read
+                                            href="{{ route('post.single', ['id' => $item->slug]) }}"
+                                            class="btn btn-xs btn-light text-1 text-uppercase">Read
                                             More</a></span>
                                 </div>
 

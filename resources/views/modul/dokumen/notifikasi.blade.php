@@ -33,6 +33,7 @@
     <script>
         $('button.modal-tte').click(function() {
             $('#xlModal').modal('show');
+            $('h5#exampleModalLabel').html('Silana');
             id = $(this).attr('id');
             csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
             $.post("{{ route('modal.tte') }}", {

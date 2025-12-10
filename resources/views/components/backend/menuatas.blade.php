@@ -48,116 +48,43 @@
                 <div class="menu-submenu menu-submenu-fixed menu-submenu-left" style="width:1000px">
                     <div class="menu-subnav">
                         <ul class="menu-content">
-                            <li class="menu-item">
-                                <h3 class="menu-heading menu-toggle">
-                                    <i class="menu-bullet menu-bullet-dot">
-                                        <span></span>
-                                    </i>
-                                    <span class="menu-text">Surat Keterangan</span>
-                                    <i class="menu-arrow"></i>
-                                </h3>
-                                <ul class="menu-inner">
-                                    <li class="menu-item" aria-haspopup="true">
-                                        <a href="{{ route('kurang.mampu') }}" class="menu-link">
-                                            <i class="menu-bullet menu-bullet-dot">
-                                                <span></span>
-                                            </i>
-                                            <span class="menu-text">Kurang Mampu</span>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item" aria-haspopup="true">
-                                        <a href="javascript:;" class="menu-link">
-                                            <i class="menu-bullet menu-bullet-dot">
-                                                <span></span>
-                                            </i>
-                                            <span class="menu-text">Latest Tasks</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="menu-item">
-                                <h3 class="menu-heading menu-toggle">
-                                    <i class="menu-bullet menu-bullet-dot">
-                                        <span></span>
-                                    </i>
-                                    <span class="menu-text">Surat Izin</span>
-                                    <i class="menu-arrow"></i>
-                                </h3>
-                                <ul class="menu-inner">
-                                    <li class="menu-item" aria-haspopup="true">
-                                        <a href="javascript:;" class="menu-link">
-                                            <i class="menu-bullet menu-bullet-dot">
-                                                <span></span>
-                                            </i>
-                                            <span class="menu-text">Latest Tasks</span>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item" aria-haspopup="true">
-                                        <a href="javascript:;" class="menu-link">
-                                            <i class="menu-bullet menu-bullet-dot">
-                                                <span></span>
-                                            </i>
-                                            <span class="menu-text">Latest Tasks</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="menu-item">
-                                <h3 class="menu-heading menu-toggle">
-                                    <i class="menu-bullet menu-bullet-dot">
-                                        <span></span>
-                                    </i>
-                                    <span class="menu-text">Surat Pengantar</span>
-                                    <i class="menu-arrow"></i>
-                                </h3>
-                                <ul class="menu-inner">
-                                    <li class="menu-item" aria-haspopup="true">
-                                        <a href="javascript:;" class="menu-link">
-                                            <i class="menu-bullet menu-bullet-dot">
-                                                <span></span>
-                                            </i>
-                                            <span class="menu-text">Latest Tasks</span>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item" aria-haspopup="true">
-                                        <a href="javascript:;" class="menu-link">
-                                            <i class="menu-bullet menu-bullet-dot">
-                                                <span></span>
-                                            </i>
-                                            <span class="menu-text">Latest Tasks</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="menu-item">
-                                <h3 class="menu-heading menu-toggle">
-                                    <i class="menu-bullet menu-bullet-dot">
-                                        <span></span>
-                                    </i>
-                                    <span class="menu-text">Surat Lainnya</span>
-                                    <i class="menu-arrow"></i>
-                                </h3>
-                                <ul class="menu-inner">
-                                    <li class="menu-item" aria-haspopup="true">
-                                        <a href="javascript:;" class="menu-link">
-                                            <i class="menu-bullet menu-bullet-dot">
-                                                <span></span>
-                                            </i>
-                                            <span class="menu-text">Latest Tasks</span>
-                                        </a>
-                                    </li>
-                                    <li class="menu-item" aria-haspopup="true">
-                                        <a href="javascript:;" class="menu-link">
-                                            <i class="menu-bullet menu-bullet-dot">
-                                                <span></span>
-                                            </i>
-                                            <span class="menu-text">Latest Tasks</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
+                            @php
+                                $data = DB::table('jenis')->get();
+                            @endphp
+                            @foreach ($data as $item)
+                                <li class="menu-item">
+                                    <h3 class="menu-heading menu-toggle">
+                                        <i class="menu-bullet menu-bullet-dot">
+                                            <span></span>
+                                        </i>
+                                        <span class="menu-text">{{ $item->nama }}</span>
+                                        <i class="menu-arrow"></i>
+                                    </h3>
+                                    <ul class="menu-inner">
+                                        @php
+                                            $sub_data = DB::table('layanan')->where('jenis_id', $item->id)->get();
+                                        @endphp
+                                        @foreach ($sub_data as $sub)
+                                            <li class="menu-item" aria-haspopup="true">
+                                                <a href="{{ route($sub->rute) }}" class="menu-link">
+                                                    <i class="menu-bullet menu-bullet-dot">
+                                                        <span></span>
+                                                    </i>
+                                                    <span class="menu-text">{{ $sub->title }}</span>
+                                                </a>
+                                            </li>
+                                        @endforeach
+
+
+                                    </ul>
+                                </li>
+                            @endforeach
+
+
 
                         </ul>
+
+
                     </div>
                 </div>
             </li>

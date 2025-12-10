@@ -4,11 +4,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{AutoController, DashboardController, DocumentsController, KiercodeController, PdfController, PerangkatController, PostController, ProfileController, ProfilkelurahanController, SuratController, TteController};
 use App\Http\Controllers\backend\PendudukController;
 use App\Http\Controllers\frontend\PortalController;
-use App\Http\Controllers\surat\KurangmampuController;
+use App\Http\Controllers\surat\{KurangmampuController, UsahaController};
 
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/signin', function () {
+    return view('signin');
+})->middleware('guest')->name('signin');
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
@@ -22,6 +25,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/box/tte/{id}', 'tte')->name('box.tte');
         Route::post('/signature', 'signature')->name('signature.surat');
         Route::post('/surat/lihat/draft', 'viewdraft')->name('surat.lihat.draft');
+        Route::post('/surat/modal/hapus/surat', 'modalhapus')->name('modal.hapus.surat');
+        Route::post('/surat/proses/hapus/surat', 'hapus')->name('proses.hapus.surat');
     });
     Route::get('/qrcode', [KiercodeController::class, 'index']);
 
@@ -56,6 +61,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('/kurang/mampu/modal/proses/delete', 'prosesdelete')->name('kurang.mampu.proses.delete');
         Route::post('/kurang/mampu/store', 'store')->name('kurang.mampu.store');
     });
+    Route::controller(UsahaController::class)->group(function () {
+        Route::get('/keterangan/usaha', 'index')->name('keterangan.usaha');
+        Route::post('/keterangan/usaha/modal', 'modal')->name('keterangan.usaha.modal');
+        Route::post('/keterangan/usaha/store', 'store')->name('keterangan.usaha.store');
+    });
     Route::controller(AutoController::class)->group(function () {
         Route::get('/auto/perangkat', 'autoperangkat')->name('auto.perangkat');
         Route::get('/auto/penduduk', 'autopenduduk')->name('auto.penduduk');
@@ -79,6 +89,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post("/profil/update", 'update')->name('profil.update');
         Route::post("/profil/ganti/banner", 'gantibanner')->name('ganti.banner');
         Route::post("/profil/ganti/logo", 'gantilogo')->name('ganti.logo');
+    });
+    Route::controller(PdfController::class)->group(function () {
+        Route::get("/download/pdf/{id}", 'download')->name('download.pdf');
     });
 });
 

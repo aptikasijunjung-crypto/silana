@@ -1,5 +1,9 @@
 @extends('template')
 
+@section('header')
+    <x-backend.pdfviewer></x-backend.pdfviewer>
+@endsection
+
 @section('konten')
     <div id="box-penduduk">
         <div class="card card-custom gutter-b">
@@ -35,6 +39,7 @@
 @endsection
 
 @section('jquery')
+    <script src="{{ asset('assets/js/pdfjs-viewer.js') }}"></script>
     <script>
         $('button.modal-mampu').click(function() {
             $('#lgModal').modal('show');

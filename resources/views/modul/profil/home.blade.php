@@ -533,6 +533,25 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label text-right">SEO URL</label>
+                                    <div class="col-lg-9 col-xl-6">
+                                        <div class="input-group input-group-lg input-group-solid">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="la la-firefox"></i>
+                                                </span>
+                                            </div>
+                                            <input type="text" class="form-control form-control-lg form-control-solid"
+                                                name="slug" id="slug" value="{{ $data->slug }}"
+                                                placeholder="Slug">
+                                        </div>
+                                        <span class="form-text text-muted">
+                                            <a href="{{ route('portal.index', ['id' => $data->slug]) }}"
+                                                target="blank">Preview Portal</a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
                                     <label class="col-xl-3 col-lg-3 col-form-label text-right">Email Address</label>
                                     <div class="col-lg-9 col-xl-6">
                                         <div class="input-group input-group-lg input-group-solid">
@@ -618,6 +637,18 @@
                                         </div>
                                         <span class="form-text text-muted">Anda dapat merubah NIK sesuai dengan
                                             NIK pimpinan instansi anda</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label text-right">Komitmen</label>
+                                    <div class="col-lg-9 col-xl-6">
+
+                                        <textarea name="komitmen" id="komitmen" rows="5"
+                                            class="form-control form-control-lg 
+                                            form-control-solid">{{ $data->komitmen }}</textarea>
+
+                                        <span class="form-text text-muted">Narasi komitmen Kepala Desa/Nagari</span>
                                     </div>
                                 </div>
 
@@ -1155,7 +1186,8 @@
                     dataType: "json",
                     type: 'get',
                     data: {
-                        term: request.term
+                        term: request.term,
+                        kelurahan_id: $("input#kelurahan_id").val()
                     },
                     success: function(data) {
                         response(data);

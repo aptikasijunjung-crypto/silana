@@ -19,7 +19,20 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
+
+
+    protected $guarded = [];
     protected $fillable = [
+        'kelurahan_id',
+        'akses_id',
+        'jabatan_id',
+        'jabatan',
+        'nik',
+        'tempat',
+        'tanggal',
+        'is_active',
+        'telp',
+        'photo',
         'name',
         'email',
         'password',

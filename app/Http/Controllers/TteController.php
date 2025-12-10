@@ -45,6 +45,7 @@ class TteController extends Controller
         } else {
             $response = TTESurat($file, $file_mime,  $qr['path'], $qr['mime'], $nik, $request->passhprase);
             $jd = json_decode($response);
+
             if (isset($jd->status_code)) {
                 $id = 0;
                 $komen = $jd->error;
@@ -61,14 +62,9 @@ class TteController extends Controller
                     'hasil' => $hasil
                 ]);
 
-                $source = Storage::get($hasil);
-                $base64 = '<div class="alert alert-primary" role="alert">Dokumen Berhasil di tanda tangani!</div>
-                            <iframe src="data:application/pdf;base64,' . base64_encode($source) . '"
-                            width="100%" height="600px" frameborder="0">
-                            Your browser does not support PDFs. Please download the PDF to view it: <a
-                                href="data:application/pdf;base64,' . base64_encode($source) . '">Download
-                                PDF</a>
-                        </iframe>';
+                $source = base64_encode(Storage::get($hasil));
+
+                $base64 = tampilPDF($source);
             }
         }
         return response()->json([

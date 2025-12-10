@@ -1,15 +1,19 @@
 <div class="row">
     <div class="col-md-8">
-        <iframe src="data:application/pdf;base64,{{ base64_encode(Storage::get('bahan/' . $data->bahan)) }}"
+        {{-- <iframe src="data:application/pdf;base64,{{ base64_encode(Storage::get('bahan/' . $data->bahan)) }}"
             width="100%" height="600px" frameborder="0">
             Your browser does not support PDFs. Please download the PDF to view it: <a
                 href="data:application/pdf;base64,{{ base64_encode(Storage::get('bahan/' . $data->bahan)) }}">Download
                 PDF</a>
-        </iframe>
+        </iframe> --}}
+
+        <div class="pdfjs-viewer"
+            pdf-document="data:application/pdf;base64,{{ base64_encode(Storage::get('bahan/' . $data->bahan)) }}"
+            initial-zoom="fit"></div>
     </div>
     <div class="col-md-4">
 
-        <form id="proses" onsubmit="return false;">
+        <form id="proses-tte" onsubmit="return false;">
             @csrf
             <input type="hidden" value="{{ $data->id }}" name="id" id="idx">
             <div class="form-group">
@@ -26,8 +30,9 @@
 
 </div>
 
+<script src="{{ asset('assets/js/pdfjs-viewer.js') }}"></script>
 <script>
-    $('form#proses').submit(function(e) {
+    $('form#proses-tte').submit(function(e) {
         $.LoadingOverlay('show');
         $.post("{{ route('proses.tte.layanan') }}", $(this).serialize(), function(data) {
             if (data.id == 0) {

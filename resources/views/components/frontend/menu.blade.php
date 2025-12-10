@@ -97,6 +97,98 @@
                 </li>
             </ul>
         </li>
+        <li class="dropdown ms-0">
+            <a class="dropdown-item dropdown-toggle" href="index.html">
+                Profil
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a class="dropdown-item" href="#">
+                        Struktur Organisasi
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="index.html#demos">
+                        Demos <span class="tip tip-dark">hot</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="dropdown ms-0">
+            <a class="dropdown-item dropdown-toggle" href="index.html">
+                Resource
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a class="dropdown-item" href="index.html">
+                        Landing Page
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="index.html#demos">
+                        Demos <span class="tip tip-dark">hot</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="dropdown ms-0">
+            <a class="dropdown-item dropdown-toggle" href="index.html">
+                Transparasi
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a class="dropdown-item" href="index.html">
+                        Landing Page
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="index.html#demos">
+                        Demos <span class="tip tip-dark">hot</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="dropdown ms-0">
+            <a class="dropdown-item dropdown-toggle" href="index.html">
+                LAYANAN
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a class="dropdown-item" href="index.html">
+                        Landing Page
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="index.html#demos">
+                        Demos <span class="tip tip-dark">hot</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="dropdown ms-0">
+            <a class="dropdown-item" href="#">
+                Pustaka Digital
+            </a>
+        </li>
+
+        <li class="dropdown ms-0">
+            <a class="dropdown-item dropdown-toggle" href="#">
+                KONTAK
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a class="dropdown-item" href="index.html">
+                        Landing Page
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="index.html#demos">
+                        Demos <span class="tip tip-dark">hot</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
 
 
 

@@ -11,12 +11,21 @@ Purchase: https://1.envato.market/EA4JP
 Renew Support: https://1.envato.market/EA4JP
 License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
 -->
+@php
+    $user = Auth::user()->id;
+    $profilData = DB::select(
+        'SELECT  a.name, a.email, a.photo, a.jabatan, b.kelurahan_name, b.text_short FROM users a
+                            LEFT JOIN kelurahan b ON a.kelurahan_id=b.kelurahan_id
+                             WHERE a.id = ?',
+        [$user],
+    )[0];
+@endphp
 <html lang="en">
 <!--begin::Head-->
 
 <head>
     <meta charset="utf-8" />
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ $profilData->name }}</title>
     <meta name="description"
         content="Metronic admin dashboard live demo. Check out all the features of the admin panel. A large number of settings, additional services and widgets." />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -53,8 +62,8 @@ License: You must have a valid license purchased only from themeforest(the above
     <!--begin::Header Mobile-->
     <div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
         <!--begin::Logo-->
-        <a href="index.html">
-            <img alt="Logo" src="{{ asset('assets/media/logos/logo-light.png') }}" />
+        <a href="{{ route('dashboard') }}" style="color: #FFFFFF;">
+            {{ $profilData->text_short }}
         </a>
         <!--end::Logo-->
         <!--begin::Toolbar-->
@@ -101,8 +110,9 @@ License: You must have a valid license purchased only from themeforest(the above
                 <!--begin::Brand-->
                 <div class="brand flex-column-auto" id="kt_brand">
                     <!--begin::Logo-->
-                    <a href="index.html" class="brand-logo">
-                        <img alt="Logo" src="{{ asset('assets/media/logos/logo-light.png') }}" />
+                    <a href="{{ route('dashboard') }}" class="brand-logo">
+                        <h4 class="text-white font-weight-bold text-9">
+                            {{ $profilData->text_short }}</h4>
                     </a>
                     <!--end::Logo-->
                     <!--begin::Toggle-->
@@ -232,10 +242,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
 
-                            @php
-                                $user = Auth::user()->id;
-                                $profilData = App\Models\User::find($user);
-                            @endphp
+
                             <div class="topbar-item">
                                 <div class="btn btn-icon btn-icon-mobile w-auto btn-clean d-flex align-items-center btn-lg px-2"
                                     id="kt_quick_user_toggle">
@@ -450,7 +457,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <!--begin::Header-->
         <div class="offcanvas-header d-flex align-items-center justify-content-between pb-5">
             <h3 class="font-weight-bold m-0">User Profile
-                <small class="text-muted font-size-sm ml-2">12 messages</small>
+                <small class="text-muted font-size-sm ml-2">Silana</small>
             </h3>
             <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_user_close">
                 <i class="ki ki-close icon-xs text-muted"></i>
@@ -463,13 +470,14 @@ License: You must have a valid license purchased only from themeforest(the above
             <div class="d-flex align-items-center mt-5">
                 <div class="symbol symbol-100 mr-5">
                     <div class="symbol-label"
-                        style="background-image:url('{{ asset('assets/media/users/300_21.jpg') }}')"></div>
+                        style="background-image:url('data:image/png;base64, {{ base64_encode(Storage::get('photos/' . $profilData->photo)) }}')">
+                    </div>
                     <i class="symbol-badge bg-success"></i>
                 </div>
                 <div class="d-flex flex-column">
                     <a href="#"
                         class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">{{ $profilData->name }}</a>
-                    <div class="text-muted mt-1">Application Developer</div>
+                    <div class="text-muted mt-1">{{ $profilData->jabatan }}</div>
                     <div class="navi mt-2">
                         <a href="#" class="navi-item">
                             <span class="navi-link p-0 pb-2">
@@ -491,7 +499,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <!--end::Svg Icon-->
                                     </span>
                                 </span>
-                                <span class="navi-text text-muted text-hover-primary">jm@softplus.com</span>
+                                <span class="navi-text text-muted text-hover-primary">{{ $profilData->email }}</span>
                             </span>
                         </a>
                         <form action="{{ route('profile.logout') }}" method="POST">

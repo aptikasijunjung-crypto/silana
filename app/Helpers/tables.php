@@ -68,10 +68,14 @@ function tabelNotifikasi($data)
         <table class='table table-striped table-bordered'>
             <thead>
                 <tr>
-                    <th class='text-center'>No</th>
-                    <th>id surat</th>
+                    <th class='text-center' width='5%'>No</th>
+                    <th class='text-center' width='7%'>Id</th>
+                    <th>Dibuat Oleh</th>
+                    <th class='text-center' width='15%'>Tanggal</th>
+                    <th class='text-center' width='10%'>Jam</th>
                     <th>Tentang</th>
-                    <th>Draft</th>                 
+                    
+                    <th class='text-center' width='5%'>TTE</th>                 
                 </tr>
             </thead>
             <tbody>";
@@ -80,11 +84,16 @@ function tabelNotifikasi($data)
         $t .= "
         <tr>
             <td class='text-center'>" . $no . ".</td>
-            <td>" . $i->nomor . "</td>
-            <td>" . $i->tentang . "</td>
-            <td>
+            <td class='text-center'>" . $i->nomor . "</td>
+            <td>" . $i->OLEH . "</td>
+            <td class='text-center'>" . tgl_indonesia(substr($i->created_at, 0, 10)) . "</td>
+            <td class='text-center'>" . substr($i->created_at, 11, 8) . "</td>
+            <td>" . $i->tentang . "</td>        
+            <td class='text-center'>
                 <button type='button' 
-                class='btn btn-light-primary font-weight-bolder btn-sm modal-tte' id='" . $i->id . "'>Proses</button>
+                class='btn btn-link  modal-tte' id='" . $i->id . "'>
+                    <i class='icon-2x text-primary flaticon-edit-1'></i>
+                </button>
             </td>
             
         </tr>
@@ -217,7 +226,7 @@ function tabelLayananKurangMampu($data)
             <td class='text-center'>" . $i->alasan_name . "</td>
             <td class='text-center'>
                 <button type='button' class='btn btn-link btn-sm lihat-draft' file='bahan/" . $i->bahan . "'>
-                    <i class='icon-2x text-warning flaticon-file'></i>
+                    <i class='icon-xl far fa-file-pdf text-warning'></i>
                 </button>
             </td>
             <td class='text-center'>" . $i->created_at . "</td>";
@@ -226,14 +235,86 @@ function tabelLayananKurangMampu($data)
         } else {
             $t .= "<td class='text-center'>
                     <button type='button' class='btn btn-link btn-sm lihat-draft' file='" . $i->hasil . "'>
-                        <i class='icon-2x text-success flaticon-list'></i>
+                        <i class='icon-xl far fa-file-pdf text-success'></i>
                     </button>
                     </td>";
         }
         $t .= "<td class='text-center'>" . $i->updated_at . "</td>
                 <td class='text-center'>
                     <button type='button' class='btn btn-link modal-delete' id='" . $i->id . "'>
-                        <i class='icon-2x text-danger flaticon-delete'></i>
+                        <i class='icon-xl fas fa-trash-alt text-danger'></i>
+                    </button>
+                </td>";
+
+
+        $t .= "    
+        </tr>
+            ";
+        $no++;
+    }
+    $t .= "
+            </tbody>
+        </table>
+    </div>
+    ";
+    return $t;
+}
+
+function tabelKeteranganUsaha($data)
+{
+    $t = null;
+    $t .= "
+    <div class='table-responsive'>
+        <table class='table table-striped table-bordered'>
+            <thead>
+                <tr>
+                    <th class='text-center'>No</th>
+                    <th class='text-center'>Nomor</th>
+                    <th class='text-center'>Pejabat</th>
+                    <th class='text-center'>NIK</th>
+                    <th class='text-center'>Jabatan</th>
+                    <th class='text-center'>Pemohon</th>
+                    
+                    <th class='text-center'>Draft</th>
+                    <th class='text-center'>Terbit</th>
+                    <th class='text-center'>Hasil</th>
+                    <th class='text-center'>TTE</th>
+                    <th class='text-center'>Hapus</th>
+                    
+                   
+                </tr>
+            </thead>
+            <tbody>";
+    $no = 1;
+    foreach ($data as $i) {
+        $t .= "
+        <tr id='baris-" . $i->id . "'>
+            <td class='text-center'>" . $no . ".</td>
+            <td class='text-center'>" . $i->nomor . "</td>
+            <td class='text-center'>" . $i->pejabat_name . "</td>
+            <td class='text-center'>" . $i->pejabat_nik . "</td>
+            <td class='text-center'>" . $i->jabatan . "</td>
+            <td class='text-center'>" . $i->ortu_name . "</td>
+            
+            <td class='text-center'>
+                <button type='button' class='btn btn-link btn-sm lihat-draft' file='bahan/" . $i->bahan . "'>
+                    <i class='icon-xl far fa-file-pdf text-warning'></i>
+                </button>
+            </td>
+            <td class='text-center'>" . $i->created_at . "</td>";
+        if (empty($i->hasil)) {
+            $t .= "<td class='text-center'><i class='icon-2x text-dark-50 flaticon-danger'></i></td>";
+        } else {
+            $t .= "<td class='text-center'>
+                    <button type='button' class='btn btn-link btn-sm lihat-draft' file='" . $i->hasil . "'>
+                        <i class='icon-xl far fa-file-pdf text-success'></i>
+                    </button>
+                    </td>";
+        }
+        $t .= "<td class='text-center'>" . $i->updated_at . "</td>
+                <td class='text-center'>
+                    <button type='button' class='btn btn-link modal-delete' id='" . $i->id . "'>
+                        <i class='icon-xl fas fa-trash-alt text-danger'></i>
                     </button>
                 </td>";
 

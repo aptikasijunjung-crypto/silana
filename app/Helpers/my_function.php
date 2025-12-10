@@ -172,16 +172,14 @@ function cKombo($name, $title, $id, $ket,  $data, $ketemu)
 function TTESurat($file, $file_mime,  $qrcode, $qrcode_mime, $nik, $password)
 {
     $parameter = array(
-        // 'file' => new CURLFILE($file, 'application/pdf'),
         'file' => new CURLFILE($file, $file_mime),
-        // 'file' => 'df',
         'nik' => $nik,
         'passphrase' => $password,
         'tampilan' => 'visible',
         'image' => 'true',
         'imageTTD' => new CURLFILE($qrcode, $qrcode_mime),
-        'width' => '60',
-        'height' => '60',
+        'width' => '50',
+        'height' => '50',
         'tag_koordinat' => '^',
         'reason' => 'Sutan Mudo',
         'location' => 'Kabupaten Sijunjung'
@@ -189,7 +187,7 @@ function TTESurat($file, $file_mime,  $qrcode, $qrcode_mime, $nik, $password)
 
     $curl = curl_init();
     curl_setopt_array($curl, array(
-        CURLOPT_URL => 'http://apibsre.sijunjung.go.id/api/sign/pdf',
+        CURLOPT_URL => 'apibsre.sijunjung.go.id/api/sign/pdf',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -215,13 +213,13 @@ function tampilPDF($data)
 {
     $t = null;
     $t .=  '
-    <iframe src="data:application/pdf;base64,' . $data . '" width="100%" height="600px" frameborder="0">
-                Your browser does not support PDFs. Please download the PDF to view it: <a
-                    href="data:application/pdf;base64,' . $data . '">Download PDF</a>
-            </iframe>
-    ';
+    <div class="pdfjs-viewer" pdf-document="data:application/pdf;base64,' . $data . '" initial-zoom="fit"></div>
+    <script src="' . asset('assets/js/pdfjs-viewer.js') . '"></script>';
     return $t;
 }
+
+
+
 
 function facebook_time_ago($timestamp)
 {

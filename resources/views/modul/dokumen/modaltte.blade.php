@@ -1,12 +1,11 @@
 <div class="row">
     <div class="col-md-6">
-        <iframe src="data:application/pdf;base64,{{ $pdf }}" width="100%" height="600px" frameborder="0">
-            Your browser does not support PDFs. Please download the PDF to view it: <a
-                href="data:application/pdf;base64,{{ $pdf }}">Download PDF</a>
-        </iframe>
+       
+        
+        <div class="pdfjs-viewer" pdf-document="data:application/pdf;base64,{{ $pdf }}" initial-zoom="fit"></div>
     </div>
     <div class="col-md-6">
-        <?= alertBody('Tidakan kebijakan yang akan di ambil') ?>
+        <?= alertBody('Tindakan kebijakan yang akan di ambil') ?>
         <form id="proses-tte" onsubmit="return false;">
             @csrf
             <input type="hidden" name="kode" value="{{ $data->TTE }}">
@@ -39,9 +38,10 @@
     </div>
 </div>
 
+<script src="assets/js/pdfjs-viewer.js"></script>
 <script>
     $('form#proses-tte').submit(function(e) {
-
+        $.LoadingOverlay('show');
         $.post("{{ route('proses.tte') }}", $(this).serialize(), function(data) {
             if (data.id == 0) {
                 komentar(0, "Opps", data.komen);
@@ -49,8 +49,10 @@
                 komentar(1, "Success", data.komen);
                 $('div.card-body').html(data.umpan);
                 $('h3.card-title').html(data.judul);
-                $('#lgModal').modal('hide');
+                $('#xlModal').modal('hide');
+
             }
+            $.LoadingOverlay('hide');
         }, "json");
     });
 

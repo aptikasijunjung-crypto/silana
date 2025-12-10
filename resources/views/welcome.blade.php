@@ -1,276 +1,353 @@
 <!DOCTYPE html>
-<!--
-Template Name: Metronic - Bootstrap 4 HTML, React, Angular 11 & VueJS Admin Dashboard Theme
-Author: KeenThemes
-Website: http://www.keenthemes.com/
-Contact: support@keenthemes.com
-Follow: www.twitter.com/keenthemes
-Dribbble: www.dribbble.com/keenthemes
-Like: www.facebook.com/keenthemes
-Purchase: https://1.envato.market/EA4JP
-Renew Support: https://1.envato.market/EA4JP
-License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
--->
 <html lang="en">
-<!--begin::Head-->
 
-<head>
+<x-utama.header></x-utama.header>
 
-    <meta charset="utf-8" id="login" />
-    <title>Login Page 5 | Keenthemes</title>
-    <meta name="description" content="Login page example" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link rel="canonical" href="https://keenthemes.com/metronic" />
-    <!--begin::Fonts-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
-    <!--end::Fonts-->
-    <!--begin::Page Custom Styles(used by this page)-->
-    <link href="{{ asset('assets/css/pages/login/classic/login-5.css') }}" rel="stylesheet" type="text/css" />
-    <!--end::Page Custom Styles-->
-    <!--begin::Global Theme Styles(used by all pages)-->
-    <link href="{{ asset('assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/plugins/custom/prismjs/prismjs.bundle.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
-    <!--end::Global Theme Styles-->
-    <!--begin::Layout Themes(used by all pages)-->
-    <link href="{{ asset('assets/css/themes/layout/header/base/light.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/css/themes/layout/header/menu/light.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/css/themes/layout/brand/dark.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/css/themes/layout/aside/dark.css') }}" rel="stylesheet" type="text/css" />
-    <!--end::Layout Themes-->
-    <link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
-</head>
-<!--end::Head-->
-<!--begin::Body-->
+<body class="loading-overlay-showing" data-plugin-page-transition data-loading-overlay
+    data-plugin-options="{'hideDelay': 500}">
+    <div class="loading-overlay">
+        <div class="bounce-loader">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
 
-<body id="kt_body"
-    class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
-    <!--begin::Main-->
-    <div class="d-flex flex-column flex-root">
-        <!--begin::Login-->
-        <div class="login login-5 
-        @if (request()->is('/')) {{ 'login-signin-on' }}
-        @elseif (request()->is('register'))
-        {{ 'login-signup-on' }}
-        @else
-        {{ 'login-forgot-on' }} @endif
-         
-        d-flex flex-row-fluid"
-            id="kt_login">
-            <div class="d-flex flex-center bgi-size-cover bgi-no-repeat flex-row-fluid"
-                style="background-image: url(assets/media/bg/bg-2.jpg);">
-                <div class="login-form text-center text-white p-7 position-relative overflow-hidden">
-                    <!--begin::Login Header-->
-                    <div class="d-flex flex-center mb-15">
-                        <a href="#">
-                            <img src="assets/media/logos/logo-letter-13.png" class="max-h-75px" alt="" />
-                        </a>
-                    </div>
-                    <!--end::Login Header-->
-                    <!--begin::Login Sign in form-->
-                    <div class="login-signin">
-                        <div class="mb-20">
-                            <h3 class="opacity-40 font-weight-normal">Sign In To Admin</h3>
-                            <p class="opacity-40">Enter your details to login to your account:</p>
+    <div class="body">
+
+
+        <x-utama.menu></x-utama.menu>
+        <div role="main" class="main pt-3 mt-3">
+            <div class="container">
+                <div class="row pb-1">
+
+                    <x-utama.terbaru></x-utama.terbaru>
+
+                    <x-utama.topthree></x-utama.topthree>
+                </div>
+                <div class="row pb-1 pt-2">
+
+                    <div class="col-md-9">
+
+
+
+
+                        <x-utama.body></x-utama.body>
+
+                        <div class="text-center py-3 mb-4">
+                            <a href="http://themeforest.net/item/porto-responsive-html5-template/4106987"
+                                target="_blank" class="d-block">
+                                <img alt="Porto" class="img-fluid ps-3"
+                                    src="{{ asset('frontend/') }}img/blog/blog-ad-3.jpg" />
+                            </a>
                         </div>
-                        <form class="form" method="POST" action="{{ route('login') }}" id="kt_login_signin_form">
-                            @csrf
-                            <div class="form-group">
-                                <input
-                                    class="form-control h-auto text-white bg-white-o-5 rounded-pill border-0 py-4 px-8"
-                                    type="email" placeholder="Email" name="email" autocomplete="off" />
-                                @error('email')
-                                    <div class="fv-plugins-message-container">
-                                        <div data-field="username" data-validator="notEmpty" class="fv-help-block">
-                                            {{ $message }}</div>
+
+                        <x-utama.popular></x-utama.popular>
+
+                    </div>
+
+                    <div class="col-md-3">
+
+                        <h3 class="font-weight-bold text-3 pt-1">Featured Posts</h3>
+
+                        <div class="pb-2">
+
+                            <div class="mb-4 pb-2">
+                                <article class="thumb-info thumb-info-no-zoom bg-transparent border-radius-0 pb-2 mb-2">
+                                    <div class="row">
+                                        <div class="col">
+                                            <a href="blog-post.html">
+                                                <img src="{{ 'frontend/' }}img/blog/default/blog-65.jpg"
+                                                    class="img-fluid border-radius-0"
+                                                    alt="Main Reasons To Stop Texting And Driving">
+                                            </a>
+                                        </div>
                                     </div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <input
-                                    class="form-control h-auto text-white bg-white-o-5 rounded-pill border-0 py-4 px-8"
-                                    type="password" placeholder="Password" name="password" />
-                                @error('password')
-                                    <div class="fv-plugins-message-container">
-                                        <div data-field="username" data-validator="notEmpty" class="fv-help-block">
-                                            {{ $message }}</div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="thumb-info-caption-text">
+                                                <div class="d-inline-block text-default text-1 mt-2 float-none">
+                                                    <a href="blog-post.html"
+                                                        class="text-decoration-none text-color-default">January 12,
+                                                        2020</a>
+                                                </div>
+                                                <h4
+                                                    class="d-block line-height-2 text-4 text-dark font-weight-bold mb-0">
+                                                    <a href="blog-post.html"
+                                                        class="text-decoration-none text-color-dark text-color-hover-primary">Main
+                                                        Reasons To Stop Texting And Driving</a>
+                                                </h4>
+                                            </div>
+                                        </div>
                                     </div>
-                                @enderror
+                                </article>
                             </div>
-                            <div
-                                class="form-group d-flex flex-wrap justify-content-between align-items-center px-8 opacity-60">
-                                <div class="checkbox-inline">
-                                    <label class="checkbox checkbox-outline checkbox-white text-white m-0">
-                                        <input type="checkbox" name="remember" />
-                                        <span></span>Remember me</label>
-                                </div>
-                                <a href="javascript:;" id="kt_login_forgot" class="text-white font-weight-bold">Forget
-                                    Password ?</a>
+
+                            <div class="mb-4 pb-2">
+                                <article class="thumb-info thumb-info-no-zoom bg-transparent border-radius-0 pb-2 mb-2">
+                                    <div class="row">
+                                        <div class="col">
+                                            <a href="blog-post.html">
+                                                <img src="{{ 'frontend/' }}img/blog/default/blog-66.jpg"
+                                                    class="img-fluid border-radius-0"
+                                                    alt="Tips to Help You Quickly Prepare your Lunch">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="thumb-info-caption-text">
+                                                <div class="d-inline-block text-default text-1 mt-2 float-none">
+                                                    <a href="blog-post.html"
+                                                        class="text-decoration-none text-color-default">January 12,
+                                                        2020</a>
+                                                </div>
+                                                <h4
+                                                    class="d-block line-height-2 text-4 text-dark font-weight-bold mb-0">
+                                                    <a href="blog-post.html"
+                                                        class="text-decoration-none text-color-dark text-color-hover-primary">Tips
+                                                        to Help You Quickly Prepare your Lunch</a>
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
                             </div>
-                            <div class="form-group text-center mt-10">
-                                <button type="submit" class="btn btn-pill btn-primary opacity-90 px-15 py-3">Sign
-                                    In</button>
-                            </div>
-                        </form>
-                        <div class="mt-10">
-                            <span class="opacity-40 mr-4">Don't have an account yet?</span>
-                            <a href="javascript:;" id="kt_login_signup"
-                                class="text-white opacity-30 font-weight-normal">Sign Up</a>
+
                         </div>
+
+                        <aside class="sidebar pb-4">
+                            <h5 class="font-weight-semi-bold pt-4">Photos from Instagram</h5>
+                            <div class="instagram-feed" data-type="nomargins" class="mb-4 pb-1"></div>
+                            <h5 class="font-weight-semi-bold pt-4 mb-2">Tags</h5>
+                            <div class="mb-3 pb-1">
+                                <a href="#"><span
+                                        class="badge badge-dark badge-sm rounded-pill text-uppercase px-2 py-1 me-1">design</span></a>
+                                <a href="#"><span
+                                        class="badge badge-dark badge-sm rounded-pill text-uppercase px-2 py-1 me-1">brands</span></a>
+                                <a href="#"><span
+                                        class="badge badge-dark badge-sm rounded-pill text-uppercase px-2 py-1 me-1">video</span></a>
+                                <a href="#"><span
+                                        class="badge badge-dark badge-sm rounded-pill text-uppercase px-2 py-1 me-1">business</span></a>
+                                <a href="#"><span
+                                        class="badge badge-dark badge-sm rounded-pill text-uppercase px-2 py-1 me-1">travel</span></a>
+                            </div>
+                            <a href="http://themeforest.net/item/porto-responsive-html5-template/4106987"
+                                target="_blank" class="my-4 pt-3 d-block">
+                                <img alt="Porto" class="img-fluid"
+                                    src="{{ 'frontend/' }}img/blog/blog-ad-1-medium.jpg" />
+                            </a>
+                            <h5 class="font-weight-semi-bold pt-4">Find us on Facebook</h5>
+                            <div class="fb-page" data-href="https://www.facebook.com/OklerThemes/"
+                                data-small-header="true" data-adapt-container-width="true" data-hide-cover="true"
+                                data-show-facepile="true">
+                                <blockquote cite="https://www.facebook.com/OklerThemes/" class="fb-xfbml-parse-ignore">
+                                    <a href="https://www.facebook.com/OklerThemes/">Okler Themes</a></blockquote>
+                            </div>
+                        </aside>
+
+                        <h5 class="font-weight-semi-bold pt-1">Recent Comments</h5>
+
+                        <ul class="list-unstyled mb-4 pb-1 pt-2">
+
+                            <li class="pb-3 text-2">
+                                <a href="#" rel="external nofollow" class="font-weight-bold text-dark">John
+                                    Doe</a> on <a href="blog-post.html" class="text-dark">Main Reasons To Stop
+                                    Texting And Driving</a>
+                            </li>
+
+                            <li class="pb-3 text-2">
+                                <a href="#" rel="external nofollow" class="font-weight-bold text-dark">John
+                                    Doe</a> on <a href="blog-post.html" class="text-dark">Tips to Help You Quickly
+                                    Prepare your Lunch</a>
+                            </li>
+
+                            <li class="pb-3 text-2">
+                                <a href="#" rel="external nofollow" class="font-weight-bold text-dark">John
+                                    Doe</a> on <a href="blog-post.html" class="text-dark">Why should I buy a
+                                    smartwatch?</a>
+                            </li>
+
+                            <li class="pb-3 text-2">
+                                <a href="#" rel="external nofollow" class="font-weight-bold text-dark">John
+                                    Doe</a> on <a href="blog-post.html" class="text-dark">The best augmented reality
+                                    smartglasses</a>
+                            </li>
+
+                            <li class="pb-3 text-2">
+                                <a href="#" rel="external nofollow" class="font-weight-bold text-dark">John
+                                    Doe</a> on <a href="blog-post.html" class="text-dark">12 Healthiest Foods to Eat
+                                    for Breakfast</a>
+                            </li>
+
+                        </ul>
+
                     </div>
-                    <!--end::Login Sign in form-->
-                    <!--begin::Login Sign up form-->
-                    <div class="login-signup">
-                        <div class="mb-20">
-                            <h3 class="opacity-40 font-weight-normal">Sign Up</h3>
-                            <p class="opacity-40">Enter your details to create your account</p>
-                        </div>
-                        <form class="form text-center" id="kt_login_signup_form" method="POST"
-                            action="{{ route('register') }}">
-                            @csrf
-                            <div class="form-group">
-                                <input
-                                    class="form-control h-auto text-white bg-white-o-5 rounded-pill border-0 py-4 px-8"
-                                    type="text" placeholder="Fullname" name="name" />
-                            </div>
-                            <div class="form-group">
-                                <input
-                                    class="form-control h-auto text-white bg-white-o-5 rounded-pill border-0 py-4 px-8"
-                                    type="text" placeholder="Email" name="email" autocomplete="off" />
-                            </div>
-                            <div class="form-group">
-                                <input
-                                    class="form-control h-auto text-white bg-white-o-5 rounded-pill border-0 py-4 px-8"
-                                    type="password" placeholder="Password" name="password" />
-                            </div>
-                            <div class="form-group">
-                                <input
-                                    class="form-control h-auto text-white bg-white-o-5 rounded-pill border-0 py-4 px-8"
-                                    type="password" placeholder="Confirm Password" name="password_confirmation" />
-                            </div>
-                            <div class="form-group text-left px-8">
-                                <div class="checkbox-inline">
-                                    <label class="checkbox checkbox-outline checkbox-white opacity-60 text-white m-0">
-                                        <input type="checkbox" name="agree" />
-                                        <span></span>I Agree the
-                                        <a href="#" class="text-white font-weight-bold ml-1">terms and
-                                            conditions</a>.</label>
-                                </div>
-                                <div class="form-text text-muted text-center"></div>
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-pill btn-primary opacity-90 px-15 py-3 m-2">Sign
-                                    Up</button>
-                                <button id="kt_login_signup_cancel"
-                                    class="btn btn-pill btn-outline-white opacity-70 px-15 py-3 m-2">Cancel</button>
-                            </div>
-                        </form>
-                    </div>
-                    <!--end::Login Sign up form-->
-                    <!--begin::Login forgot password form-->
-                    <div class="login-forgot">
-                        <div class="mb-20">
-                            <h3 class="opacity-40 font-weight-normal">Forgotten Password ?</h3>
-                            <p class="opacity-40">Enter your email to reset your password</p>
-                        </div>
-                        <form class="form" id="kt_login_forgot_form">
-                            <div class="form-group mb-10">
-                                <input
-                                    class="form-control h-auto text-white bg-white-o-5 rounded-pill border-0 py-4 px-8"
-                                    type="text" placeholder="Email" name="email" autocomplete="off" />
-                            </div>
-                            <div class="form-group">
-                                <button id="kt_login_forgot_submit"
-                                    class="btn btn-pill btn-primary opacity-90 px-15 py-3 m-2">Request</button>
-                                <button id="kt_login_forgot_cancel"
-                                    class="btn btn-pill btn-outline-white opacity-70 px-15 py-3 m-2">Cancel</button>
-                            </div>
-                        </form>
-                    </div>
-                    <!--end::Login forgot password form-->
+
                 </div>
             </div>
+
         </div>
-        <!--end::Login-->
+
+        <footer id="footer">
+            <div class="container">
+                <div class="footer-ribbon">
+                    <span>Get in Touch</span>
+                </div>
+                <div class="row py-5 my-4">
+                    <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
+                        <h5 class="text-3 mb-3">ABOUT THE BLOG</h5>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu pulvinar magna semper
+                            scelerisque.</p>
+                        <p class="mb-2">Praesent venenatis turpis vitae purus semper, eget sagittis velit venenatis
+                            ptent taciti sociosqu ad litora...</p>
+                        <p class="mb-0"><a href="#"
+                                class="btn-flat btn-xs text-color-light p-relative top-5"><strong class="text-2">VIEW
+                                    MORE</strong><i class="fas fa-angle-right p-relative top-1 ps-2"></i></a></p>
+                    </div>
+                    <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
+                        <h5 class="text-3 mb-3">RECENT POSTS</h5>
+                        <ul class="list-unstyled mb-0">
+                            <li class="d-flex mb-3 pb-1">
+                                <article class="d-flex">
+                                    <a href="#">
+                                        <img class="me-3 rounded-circle"
+                                            src="{{ 'frontend/' }}img/office/our-office-4-square.jpg" alt=""
+                                            style="max-width: 70px;">
+                                    </a>
+                                    <div class="media-body">
+                                        <a href="#">
+                                            <h6 class="text-3 text-color-light opacity-8 line-height-7 ls-0 mb-1">
+                                                Lorem ipsum dolor sit, consectetur adipiscing elit.</h6>
+                                            <p class="text-2 mb-0">12:53 AM Dec 19th</p>
+                                        </a>
+                                    </div>
+                                </article>
+                            </li>
+                            <li class="d-flex">
+                                <article class="d-flex">
+                                    <a href="#">
+                                        <img class="me-3 rounded-circle"
+                                            src="{{ 'frontend/' }}img/office/our-office-5-square.jpg" alt=""
+                                            style="max-width: 70px;">
+                                    </a>
+                                    <div class="media-body">
+                                        <a href="#">
+                                            <h6 class="text-3 text-color-light opacity-8 line-height-7 ls-0 mb-1">
+                                                Lorem ipsum dolor sit, consectetur adipiscing elit.</h6>
+                                            <p class="text-2 mb-0">12:53 AM Dec 19th</p>
+                                        </a>
+                                    </div>
+                                </article>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-lg-3 mb-5 mb-md-0">
+                        <h5 class="text-3 mb-3">RECENT COMMENTS</h5>
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-3 pb-1">
+                                <a href="#">
+                                    <p class="text-3 text-color-light opacity-8 mb-1"><i
+                                            class="fas fa-angle-right text-color-primary"></i><strong
+                                            class="ms-2">John Doe</strong> commented on <strong
+                                            class="text-color-primary">lorem ipsum dolor sit amet.</strong></p>
+                                    <p class="text-2 mb-0">12:55 AM Dec 19th</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <p class="text-3 text-color-light opacity-8 mb-1"><i
+                                            class="fas fa-angle-right text-color-primary"></i><strong
+                                            class="ms-2">John Doe</strong> commented on <strong
+                                            class="text-color-primary">lorem ipsum dolor sit amet.</strong></p>
+                                    <p class="text-2 mb-0">12:55 AM Dec 19th</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-lg-2">
+                        <h5 class="text-3 mb-3">CATEGORIES</h5>
+                        <p>
+                            <a href="#"><span
+                                    class="badge badge-dark bg-color-black badge-sm py-2 me-1 mb-2 text-uppercase">Gadgets</span></a>
+                            <a href="#"><span
+                                    class="badge badge-dark bg-color-black badge-sm py-2 me-1 mb-2 text-uppercase">Photography</span></a>
+                            <a href="#"><span
+                                    class="badge badge-dark bg-color-black badge-sm py-2 me-1 mb-2 text-uppercase">Lifestyle</span></a>
+                            <a href="#"><span
+                                    class="badge badge-dark bg-color-black badge-sm py-2 me-1 mb-2 text-uppercase">Fashion</span></a>
+                            <a href="#"><span
+                                    class="badge badge-dark bg-color-black badge-sm py-2 me-1 mb-2 text-uppercase">Recipes</span></a>
+                            <a href="#"><span
+                                    class="badge badge-dark bg-color-black badge-sm py-2 me-1 mb-2 text-uppercase">Travel</span></a>
+                            <a href="#"><span
+                                    class="badge badge-dark bg-color-black badge-sm py-2 me-1 mb-2 text-uppercase">Business</span></a>
+                            <a href="#"><span
+                                    class="badge badge-dark bg-color-black badge-sm py-2 me-1 mb-2 text-uppercase">Architecture</span></a>
+                            <a href="#"><span
+                                    class="badge badge-dark bg-color-black badge-sm py-2 me-1 mb-2 text-uppercase">Reviews</span></a>
+                            <a href="#"><span
+                                    class="badge badge-dark bg-color-black badge-sm py-2 me-1 mb-2 text-uppercase">Sports</span></a>
+                            <a href="#"><span
+                                    class="badge badge-dark bg-color-black badge-sm py-2 me-1 mb-2 text-uppercase">Videos</span></a>
+                            <a href="#"><span
+                                    class="badge badge-dark bg-color-black badge-sm py-2 me-1 mb-2 text-uppercase">Technology</span></a>
+                            <a href="#"><span
+                                    class="badge badge-dark bg-color-black badge-sm py-2 me-1 mb-2 text-uppercase">Design</span></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container py-2">
+                    <div class="row py-4">
+                        <div
+                            class="col-lg-1 d-flex align-items-center justify-content-center justify-content-lg-start mb-2 mb-lg-0">
+                            <a href="index.html" class="logo pe-0 pe-lg-3">
+                                <img alt="Porto Website Template" src="{{ asset('frontend/img/logo-footer.png') }}"
+                                    class="opacity-5" height="32">
+                            </a>
+                        </div>
+                        <div
+                            class="col-lg-7 d-flex align-items-center justify-content-center justify-content-lg-start mb-4 mb-lg-0">
+                            <p>© Copyright 2024. All Rights Reserved.</p>
+                        </div>
+                        <div class="col-lg-4 d-flex align-items-center justify-content-center justify-content-lg-end">
+                            <nav id="sub-menu">
+                                <ul>
+                                    <li><i class="fas fa-angle-right"></i><a href="page-faq.html"
+                                            class="ms-1 text-decoration-none"> FAQ's</a></li>
+                                    <li><i class="fas fa-angle-right"></i><a href="sitemap.html"
+                                            class="ms-1 text-decoration-none"> Sitemap</a></li>
+                                    <li><i class="fas fa-angle-right"></i><a href="contact-us.html"
+                                            class="ms-1 text-decoration-none"> Contact Us</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
-    <!--end::Main-->
-    <script>
-        var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";
-    </script>
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-        crossorigin="anonymous"></script>
-    <!--begin::Global Config(global config for global JS scripts)-->
-    <script>
-        var KTAppSettings = {
-            "breakpoints": {
-                "sm": 576,
-                "md": 768,
-                "lg": 992,
-                "xl": 1200,
-                "xxl": 1400
-            },
-            "colors": {
-                "theme": {
-                    "base": {
-                        "white": "#ffffff",
-                        "primary": "#3699FF",
-                        "secondary": "#E5EAEE",
-                        "success": "#1BC5BD",
-                        "info": "#8950FC",
-                        "warning": "#FFA800",
-                        "danger": "#F64E60",
-                        "light": "#E4E6EF",
-                        "dark": "#181C32"
-                    },
-                    "light": {
-                        "white": "#ffffff",
-                        "primary": "#E1F0FF",
-                        "secondary": "#EBEDF3",
-                        "success": "#C9F7F5",
-                        "info": "#EEE5FF",
-                        "warning": "#FFF4DE",
-                        "danger": "#FFE2E5",
-                        "light": "#F3F6F9",
-                        "dark": "#D6D6E0"
-                    },
-                    "inverse": {
-                        "white": "#ffffff",
-                        "primary": "#ffffff",
-                        "secondary": "#3F4254",
-                        "success": "#ffffff",
-                        "info": "#ffffff",
-                        "warning": "#ffffff",
-                        "danger": "#ffffff",
-                        "light": "#464E5F",
-                        "dark": "#ffffff"
-                    }
-                },
-                "gray": {
-                    "gray-100": "#F3F6F9",
-                    "gray-200": "#EBEDF3",
-                    "gray-300": "#E4E6EF",
-                    "gray-400": "#D1D3E0",
-                    "gray-500": "#B5B5C3",
-                    "gray-600": "#7E8299",
-                    "gray-700": "#5E6278",
-                    "gray-800": "#3F4254",
-                    "gray-900": "#181C32"
-                }
-            },
-            "font-family": "Poppins"
-        };
-    </script>
-    <!--end::Global Config-->
-    <!--begin::Global Theme Bundle(used by all pages)-->
-    <script src="{{ asset('assets/plugins/global/plugins.bundle.js') }}"></script>
-    <script src="{{ asset('assets/plugins/custom/prismjs/prismjs.bundle.js') }}"></script>
-    <script src="{{ asset('assets/js/scripts.bundle.js') }}"></script>
-    <!--end::Global Theme Bundle-->
-    <!--begin::Page Scripts(used by this page)-->
-    <script src="{{ asset('assets/js/pages/custom/login/login-general.js') }}"></script>
-    <!--end::Page Scripts-->
+
+
+
+    <!-- Vendor -->
+    <script src="{{ asset('frontend/vendor/plugins/js/plugins.min.js') }}"></script>
+    <script src="{{ asset('frontend/vendor/instafeed/instafeed.min.js') }}"></script>
+
+    <!-- Theme Base, Components and Settings -->
+    <script src="{{ asset('frontend/js/theme.js') }}"></script>
+
+    <!-- Theme Custom -->
+    <script src="{{ asset('frontend/js/custom.js') }}"></script>
+
+    <!-- Theme Initialization Files -->
+    <script src="{{ asset('frontend/js/theme.init.js') }}"></script>
+
+    <!-- Examples -->
+    <script src="{{ asset('frontend/js/examples/examples.instagramFeed.js') }}"></script>
 
 </body>
-<!--end::Body-->
 
 </html>

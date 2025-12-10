@@ -9,6 +9,8 @@ use Illuminate\Support\Str;
 use App\Models\{Surat, User};
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
+use function Pest\Laravel\get;
+
 class SuratController extends Controller
 {
     public function index()
@@ -17,7 +19,7 @@ class SuratController extends Controller
         $id = Auth::user()->id;
         $data = DB::select('SELECT a.nomor, b.tentang, b.files, b.origin_file, b.created_at, b.updated_at FROM setuju a, surat b WHERE 
                         a.nomor=b.nomor AND
-                        a.user_id=?', [$id]);
+                        b.oleh = ? ORDER BY b.created_at', [$id]);
         return view('modul.surat.home', ['data' => $data]);
     }
 
@@ -118,5 +120,37 @@ class SuratController extends Controller
     {
         $file = $request->file;
         return view('modul.surat.draft', compact('file'));
+    }
+
+    public function modalhapus(Request $request)
+    {
+
+        return view('modul.surat.modalhapus', ['id' => $request->id]);
+    }
+
+    public function hapus(Request $request)
+    {
+        $data = DB::table('surat')->where('nomor', $request->nomor)->get()->first();
+        $draft = $data->files;
+        $origin_file = $data->origin_file;
+
+        if (empty($draft)) {
+        } else {
+            if (Storage::exists($draft)) {
+                unlink(Storage::path($draft));
+            }
+        }
+
+        if (empty($origin_file)) {
+        } else {
+            if (Storage::exists($origin_file)) {
+                unlink(Storage::path($origin_file));
+            }
+        }
+
+        DB::table('surat')->where('nomor', $request->nomor)->delete();
+        return response()->json([
+            'id' => $request->nomor
+        ]);
     }
 }

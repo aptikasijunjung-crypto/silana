@@ -1,6 +1,11 @@
-<iframe src="data:application/pdf;base64,{{ base64_encode(Storage::get($file)) }}" width="100%" height="600px"
-    frameborder="0">
-    Your browser does not support PDFs. Please download the PDF to view it: <a
-        href="data:application/pdf;base64,{{ base64_encode(Storage::get($file)) }}">Download
-        PDF</a>
-</iframe>
+<a href="{{ route('download.pdf', ['id' => Crypt::encryptString($file)]) }}" target="blank"
+    class="btn btn-primary btn-sm mr-3">
+    Download
+</a>
+<button type="button" class="btn btn-light" data-dismiss="modal">Tutup</button>
+
+<div class="mt-3 pdfjs-viewer" pdf-document="data:application/pdf;base64,{{ base64_encode(Storage::get($file)) }}"
+    initial-zoom="fit"></div>
+
+
+<script src="{{ asset('assets/js/pdfjs-viewer.js') }}"></script>

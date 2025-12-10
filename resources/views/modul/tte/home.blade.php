@@ -1,5 +1,9 @@
 @extends('template')
 
+@section('header')
+    <x-backend.pdfviewer></x-backend.pdfviewer>
+@endsection
+
 @section('konten')
     <div class="alert alert-custom alert-white alert-shadow fade show gutter-b" role="alert">
         <div class="alert-icon">
@@ -20,7 +24,7 @@
                 <!--end::Svg Icon-->
             </span>
         </div>
-        <div class="alert-text">Pengelolaan Data Perangkat dengan baik</div>
+        <div class="alert-text">Data Layanan</div>
     </div>
 
     <div id="box-penduduk">
@@ -76,6 +80,7 @@
 @endsection
 
 @section('jquery')
+    <script src="{{ asset('assets/js/pdfjs-viewer.js') }}"></script>
     <script>
         $('button.modal-tte').click(function(e) {
             $('#lgModal').modal('show');

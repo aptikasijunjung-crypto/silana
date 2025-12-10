@@ -17,7 +17,9 @@ class DocumentsController extends Controller
 {
     public function index()
     {
-        return view('modul.dokumen.home');
+        $id = Auth::user()->id;
+        $data = DB::table('users')->where('id', $id)->get()->first();
+        return view('modul.dokumen.home', ['id' => $id, 'data' => $data]);
     }
 
     public function store(Request $request)
@@ -77,19 +79,16 @@ class DocumentsController extends Controller
                 }
                 Surat::insert([
                     'nomor' => $request->nomor,
+                    'oleh' => $request->oleh,
                     'tentang' => $request->tentang,
                     'files' => $simpan,
                     'created_at' => Carbon::now(),
                     'on_check' => 0
                 ]);
                 $source = Storage::get($simpan);
-                $output = '<div class="alert alert-primary" role="alert">Dokumen Berhasil di Upload!</div>
-                            <iframe src="data:application/pdf;base64,' . base64_encode($source) . '"
-                            width="100%" height="600px" frameborder="0">
-                            Your browser does not support PDFs. Please download the PDF to view it: <a
-                                href="data:application/pdf;base64,' . base64_encode($source) . '">Download
-                                PDF</a>
-                        </iframe>';
+
+                $output .= '<div class="pdfjs-viewer" pdf-document="data:application/pdf;base64, ' . base64_encode($source) . '" initial-zoom="fit"></div>';
+                $output .= '<script src="' . asset('assets/js/pdfjs-viewer.js') . '"></script>';
             }
         }
 
@@ -155,7 +154,9 @@ class DocumentsController extends Controller
     public function autopejabat(Request $request)
     {
         $term = '%' . $request->term . '%';
-        $data = DB::select("select name AS label, id as value, jabatan, nik from users where CONCAT_WS(',', name, email) LIKE ? LIMIT 0,10", [$term]);
+
+        $data = DB::select("SELECT name AS label, id as value, jabatan, nik from users where CONCAT_WS(',', name, email) LIKE ? 
+                                AND kelurahan_id = ? LIMIT 0,10", [$term, $request->kelurahan_id]);
         return response()->json($data);
     }
 
@@ -163,7 +164,9 @@ class DocumentsController extends Controller
     {
         $id = Auth::user()->id;
 
-        $data = DB::select('SELECT a.id, a.nomor, b.tentang, b.files FROM setuju a, surat b
+        $data = DB::select('SELECT a.id, a.nomor, b.created_at, b.tentang, b.files, c.name AS OLEH 
+                                FROM setuju a, surat b 
+                                LEFT JOIN users c ON b.oleh=c.id
                                 WHERE 
                                 a.nomor=b.nomor AND
                                 a.user_id=? and a.urut=b.on_check
@@ -249,7 +252,7 @@ class DocumentsController extends Controller
                                     'origin_file' => $surat
                                 ]);
                             $umpan_balik = tampilPDF(base64_encode(Storage::get($surat)));
-                            $judul = "Selamat Data Berhasil di tanda tangani";
+                            $judul = "<div class='alert alert-success'>Selamat Data Berhasil di tanda tangani</div>";
                         }
                     }
                 } else {

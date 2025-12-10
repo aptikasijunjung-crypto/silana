@@ -24,9 +24,17 @@ jobs:
           script: |
             REPO="https://${{ secrets.GIT_TOKEN }}@github.com/aptikasijunjung-crypto/silana.git"
             DIR="${{ secrets.VPS_PATH }}"
-            CONTAINER="laravel_app"
             BRANCH="deploy-github"
-            
+            if [ ! -d "$DIR/.git" ]; then
+              echo "Clone repo..."
+              git clone --branch $BRANCH $REPO $DIR
+            else
+              echo "Pull update ya..."
+              cd $DIR
+              git reset --hard HEAD
+              git pull origin $BRANCH
+            fi
+                
             
             
             
